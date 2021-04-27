@@ -1,7 +1,5 @@
 # tRPC-Go helloworld 工程示例
 
- [![VEPC Score](https://pbaccess.video.qq.com/trpc.vepc_tools.vepc_banner.http/score?vappid=70420569&vsecret=6db9bf8c97010b57dd401166223ccd57b8d009c257261d53&origin=1&path=vepc%2Ftools%2Fgit%2Ffeature_demo)](https://pbaccess.video.qq.com/trpc.vepc_tools.vepc_banner.http/detail?vappid=70420569&vsecret=6db9bf8c97010b57dd401166223ccd57b8d009c257261d53&origin=1&path=vepc%2Ftools%2Fgit%2Ffeature_demo)
- 
 
 ## 项目介绍README
 创建helloworld协议，实现echo服务，在123平台发布，用rick管理pb接口。
@@ -9,28 +7,35 @@
 ## 快速上手 Getting Started
 使用者如何快速上手使用本组织/项目
 
-* 创建自己的git仓库 https://git.code.oa.com/alicehyhe/helloworld. 之后所有有关该服务的开发和代码修改都在该仓库上进行，比如简单的echo服务
-* 到工蜂平台创建一个自己的git仓库clone到本地，如：
+* 创建自己的git仓库
 ```
-git clone git@git.code.oa.com:trpc-go/helloworld.git
+vepc new video_app_short_video/hello_alice --desc=备注
 ```
-也可以直接创建helloworld目录。
+之后所有有关该服务的开发和代码修改都在该仓库上进行，比如简单的echo服务
+* clone到本地，如：
+```
+git clone git@git.code.oa.com:video_app_short_video/hello_alice.git
+```
 * 初始化 go mod 文件：
 ```
-1. cd helloworld  # 之后所有的操作都在这个目录下面执行
-2. go mod init git.code.oa.com/alicehyhe/helloworld
+1. cd hello_alice  # 之后所有的操作都在这个目录下面执行
+2. go mod init git.code.oa.com/video_app_short_video/hello_alice
 ```
-### pb接口
+### 创建蓝盾流水线
+vepc new就会建立git与蓝盾项目的映射，设置流水线回调，对于手动创建的git，可以通过`vepc check`和`vepc fix`配置回调。
+
+#### pb接口
 * 我们用protobuf定义服务方法，请求参数和响应参数。可以在rick平台新建PB。选择应用名为video_app_short_video，服务名为hello_alice。PB名称最好与服务名一致，不一致option会自动拼接hello_alice_greeter。应用名和服务名建议都使用小写字母
-* 将service-name对应的“ReplaceMe”修改为与sever一致（我的不一致）
-* 记住对应的ID和path，用于手动生成服务代码。
+* 最好将service-name对应的“ReplaceMe”修改为与sever一致（我的不一致）
+#### 创建蓝盾流水线
 ```
-vepc create trpc-go --rick-id=20547 --git-path=video_app_short_video/hello_alice -f
+vepc create --rick-id=20547 --git-path=video_app_short_video/hello_alice 
 ```
+手动点击全选，
 ### 创建服务
 进入123平台测试环境，创建服务，选择所属业务，应用名为 video_app_short_video，服务名为hello_alice。(必须和vepc的应用名和服务名配置的一致，否则蓝盾流水线在测试环境找不到对应服务)
 * 代码生成，选择TRPC-Go Stub Mod只生成桩代码，并在123平台上进行go mod。选择“TRPC-Go服务生成” 生成trpc-go代码模板。
-* 把tRPC接口->TRPC-GO-服务生成->查看详细使用方法->点我下载，下载下来的文件，push到之前git clone的仓库中。
+* 把tRPC接口->TRPC-GO-服务生成->查看详细使用方法->点我下载，下载下来的文件，push到之前git clone的仓库中。(运行vepc create时)
     * 删除本地的stub文件夹，将go.mod中以下两行删除
     ```
     replace git.code.oa.com/... => ./stub/git.code.oa.com/...

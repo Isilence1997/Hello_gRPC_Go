@@ -1,0 +1,12 @@
+server=TRPC.video_app_short_video.hello_alice
+name=greeter
+masterFile=video_app_short_video/hello_alice/greeter.proto
+protocol=TRPC
+import_name=[PBImportVersion [name=trpc/common/validate, version=latest, projectId=757, detailId=134331, pbName=validate]]
+rpcType=4
+sub_group_name=71975
+rtx=alicehyhe
+version=102
+pb_version=102
+build_status=1
+master_files_md5=b19011808b0d0f4e2cdfd352e8f92e80
