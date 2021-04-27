@@ -2,9 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5de5e604-44f6-4714-9459-c068fb10b70b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/hello_alice.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greeter.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/greeter.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/greeter_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/hello_alice/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/greeter.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/greeter_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/hello_alice/stub/git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter/greeter.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/devsec/protoc-gen-secv/validate/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/devsec/protoc-gen-secv/validate/trpc/common/validate.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/devsec/protoc-gen-secv/validate/validate.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter/greeter.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter/greeter.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter/greeter.trpc.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/stub/git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter/greeter_mock.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/test/SayHello.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello_alice/trpc_go.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trpc_go.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,5 +64,11 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="288" y="119" key="#Notifications" timestamp="1619526715220">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="288" y="119" key="#Notifications/0.0.1280.680/1920.0.2560.1400@0.0.1280.680" timestamp="1619526715220" />
   </component>
 </project>
