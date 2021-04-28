@@ -1,3 +1,7 @@
 go.sum
 .idea/
+.rick/
 upload.sh
+greeter.exe
+*.log
+hello_alice/
