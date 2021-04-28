@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6e62d86-b3b0-482f-b65c-6720064189d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/.code.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/.golangci.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/greeter.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/greeter.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/greeter_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hello_alice/trpc_go.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greeter.go" beforeDir="false" afterPath="$PROJECT_DIR$/greeter.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +25,16 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GitIgnore" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

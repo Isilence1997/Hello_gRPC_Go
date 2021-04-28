@@ -1,6 +1,6 @@
 module greeter
 
-go 1.12
+go 1.16
 
 require (
 	git.code.oa.com/devsec/protoc-gen-secv v0.2.0 // indirect
