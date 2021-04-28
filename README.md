@@ -27,6 +27,7 @@ vepc new就会建立git与蓝盾项目的映射，设置流水线回调，对于
 #### pb接口
 * 我们用protobuf定义服务方法，请求参数和响应参数。可以在rick平台新建PB。选择应用名为video_app_short_video，服务名为hello_alice。PB名称最好与服务名一致，不一致option会自动拼接hello_alice_greeter。应用名和服务名建议都使用小写字母
 * 最好将service-name对应的“ReplaceMe”修改为与sever一致（我的不一致）
+
 #### 创建蓝盾流水线
 ```
 vepc create --rick-id=20547 --git-path=video_app_short_video/hello_alice 
