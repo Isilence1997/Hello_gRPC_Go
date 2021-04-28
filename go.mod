@@ -1,6 +1,6 @@
 module greeter
 
-go 1.16
+go 1.12
 
 require (
 	git.code.oa.com/devsec/protoc-gen-secv v0.2.0 // indirect
@@ -15,8 +15,8 @@ require (
 	git.code.oa.com/trpc-go/trpc-naming-polaris v0.2.8
 	git.code.oa.com/trpc-go/trpc-opentracing-tjg v0.1.8
 	git.code.oa.com/trpc-go/trpc-selector-cl5 v0.2.0
-	github.com/golang/mock v1.4.4
-	github.com/stretchr/testify v1.6.1
 	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.2
+	github.com/golang/mock v1.4.4
+	github.com/stretchr/testify v1.7.0
 	go.uber.org/automaxprocs v1.4.0
 )
