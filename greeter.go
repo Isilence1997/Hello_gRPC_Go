@@ -11,6 +11,6 @@ import (
 func (s *greeterServiceImpl) SayHello(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
 	// implement business logic here ...
 	// ...
-	rsp.Msg = "Hello, I am tRPC-Go server."//填充响应内容
+	rsp.Msg = "Hello!" + req.GetMsg()//填充响应内容
 	return nil
 }
