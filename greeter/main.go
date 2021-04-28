@@ -1,10 +1,8 @@
 package main
 
 import (
-	_ "git.code.oa.com/vlib/go/trpc_plugins/video_component_tjg"
 	_ "go.uber.org/automaxprocs"
 
-	_ "git.code.oa.com/trpc-go/trpc-config-rainbow"
 	_ "git.code.oa.com/trpc-go/trpc-config-tconf"
 	_ "git.code.oa.com/trpc-go/trpc-filter/debuglog"
 	_ "git.code.oa.com/trpc-go/trpc-filter/recovery"
@@ -13,6 +11,7 @@ import (
 	_ "git.code.oa.com/trpc-go/trpc-metrics-runtime"
 	_ "git.code.oa.com/trpc-go/trpc-naming-polaris"
 	_ "git.code.oa.com/trpc-go/trpc-opentracing-tjg"
+	_ "git.code.oa.com/trpc-go/trpc-selector-cl5"
 
 	"git.code.oa.com/trpc-go/trpc-go/log"
 

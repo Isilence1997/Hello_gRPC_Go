@@ -1,0 +1,40 @@
+syntax = "proto3"; 
+package   trpc.video_app_short_video.hello_alice;
+
+//default java package name 
+option  java_package="com.tencent.trpcprotocol.videoAppShortVideo.helloAlice.greeter";
+option  java_multiple_files = true; 
+
+//default go package name 
+option  go_package ="git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter";
+
+// 建议使用谷歌protobuf规范 防止出现可能的兼容性问题 
+// https://developers.google.com/protocol-buffers/docs/style 
+
+// 不建议使用 google/protobuf/any.proto 
+// any强依赖package type.googleapis.com/_packagename_._messagename_.   
+// https://developers.google.com/protocol-buffers/docs/proto3#any 
+
+// tRPC-Go数据校验模块（**移除注释使用**） 
+// 介绍：http://km.oa.com/articles/view/438840 
+import "trpc/common/validate.proto";  
+
+
+
+message HelloRequest { 
+  	    //string msg = 1; 
+  	     // tRPC-Go可开启自动数据校验。例如：限制msg字段值非空，相当于len(msg) > 1 
+  	     string msg = 1 [(validate.rules).string.min_len = 1]; 
+} 
+
+ 
+message HelloReply { 
+  	   string msg = 1; 
+} 
+service Greeter { 
+      rpc SayHello (HelloRequest) returns (HelloReply); 
+      //测试天机阁
+      //rpc TestTjg(TestTjgReq) returns (TestTjgRsp);
+      //测试tconf
+      //rpc TestTconf(TestTconfReq) returns (TestTconfRsp);
+} 

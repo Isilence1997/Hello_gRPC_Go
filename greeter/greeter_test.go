@@ -6,6 +6,7 @@ import (
 
 	trpc "git.code.oa.com/trpc-go/trpc-go"
 	_ "git.code.oa.com/trpc-go/trpc-go/http"
+	_ "git.code.oa.com/trpc-go/trpc-selector-cl5"
 
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
@@ -13,6 +14,10 @@ import (
 	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
 )
 
+var greeterService = &greeterServiceImpl{}
+
+//go:generate go mod tidy
+//go:generate mockgen -destination=stub/git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter/greeter_mock.go -package=hello_alice_greeter -self_package=git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter GreeterClientProxy
 
 func Test_Greeter_SayHello(t *testing.T) {
 
