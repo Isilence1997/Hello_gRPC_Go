@@ -22,5 +22,5 @@ func (s *greeterServiceImpl) GetUserInfo(ctx context.Context, req *pb.HelloReque
 	rsp.Msg = "echo: " + req.GetMsg()//填充响应内容
 	return nil
 }
-
+// 批量获取粉丝数接口
 //func (s *greeterServiceImpl) BathGetFansCount(ctx context.Context, req *pb., rsp *pb.HelloReply)
