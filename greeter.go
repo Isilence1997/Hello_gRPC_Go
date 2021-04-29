@@ -5,6 +5,7 @@ import (
 	"git.code.oa.com/trpc-go/trpc-go/client"
 	"github.com/opentracing/opentracing-go/log"
 	"time"
+	"fmt"
 
 	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
 
@@ -45,6 +46,6 @@ func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, _ *pb.HelloRequ
 		log.Error(err)
 		return err
 	}
-	rsp.Msg = ufrRsp.Msg
+	rsp.Msg = fmt.Sprintf("%#v", ufrRsp)
 	return nil
 }

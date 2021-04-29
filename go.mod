@@ -14,7 +14,7 @@ require (
 	git.code.oa.com/trpc-go/trpc-naming-polaris v0.2.8
 	git.code.oa.com/trpc-go/trpc-opentracing-tjg v0.1.8
 	git.code.oa.com/trpc-go/trpc-selector-cl5 v0.2.0
-	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.6
+	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.8
 	git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read v1.1.5
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/golang/mock v1.5.0
