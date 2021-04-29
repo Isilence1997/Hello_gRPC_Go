@@ -4,4 +4,3 @@ go.sum
 upload.sh
 *.log
 hello_alice_bak/
-ugc_follow_read.proto

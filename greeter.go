@@ -26,13 +26,13 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 	return nil
 }
 // BathGetFansCount 批量获取粉丝数接口
-func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error{
+func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, _ *pb.HelloRequest, rsp *pb.HelloReply) error{
 	// proxy 客户端调用桩函数或者调用代理，由trpc工具自动生成，内部调用client
 	proxy := ufr.NewUgcFollowReadClientProxy(
 		client.WithProtocol("trpc"),
 		client.WithNetwork("tcp4"),
 		//target 后端服务的地址，规则为 selectorname://endpoint
-		client.WithTarget("polaris://trpc.video_app_short_video.trpc_ugc_follow_read_jce.UgcFollowRead"),
+		client.WithTarget("polaris://trpc.video_app_short_video.trpc_ugc_follow_read_jce.UgcFollowReadPb"),
 		client.WithNamespace("Development"),
 		client.WithTimeout(time.Millisecond*500),
 		)
@@ -47,6 +47,6 @@ func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, req *pb.HelloRe
 		log.Info(err)
 		return err
 	}
-	rsp.Msg = "[echo] " + fmt.Sprintf("%+v", ufrRsp)
+	rsp.Msg = "[echo] " + fmt.Sprintf("%#v", ufrRsp)
 	return nil
 }
