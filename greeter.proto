@@ -34,11 +34,12 @@ message HelloReply {
 } 
 service Greeter { 
       rpc SayHello (HelloRequest) returns (HelloReply);
+      //打印客户端请求
       rpc GetUserInfo (HelloRequest) returns (HelloReply);
       //测试天机阁
       //rpc TestTjg(TestTjgReq) returns (TestTjgRsp);
       //测试tconf
       //rpc TestTconf(TestTconfReq) returns (TestTconfRsp);
       //批量获取粉丝数接口
-      //rpc BathGetFansCount(BathGetFansCountRequest) returns (BathGetFansCountResponse);
+      rpc BathGetFansCount(BathGetFansCountRequest) returns (BathGetFansCountResponse);
 } 
