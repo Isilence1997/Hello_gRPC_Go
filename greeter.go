@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"git.code.oa.com/trpc-go/trpc-go/client"
-	"github.com/opentracing/opentracing-go/log"
+	"git.code.oa.com/trpc-go/trpc-go/log"
 	"time"
 	"fmt"
 
@@ -14,19 +14,19 @@ import (
 )
 
 // SayHello 响应HelloRequest
-func (s *greeterServiceImpl) SayHello(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+func (s *greeterServiceImpl) SayHello(_ context.Context, _ *pb.HelloRequest, rsp *pb.HelloReply) error {
 	//填充响应内容
 	rsp.Msg = "hello,I am tRPC-go sever."
 	return nil
 }
 // GetUserInfo 显示客户端的请求内容
-func (s *greeterServiceImpl) GetUserInfo(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
 	//填充响应内容
 	rsp.Msg = "echo: " + req.GetMsg()
 	return nil
 }
 // BathGetFansCount 批量获取粉丝数接口
-func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, _ *pb.HelloRequest, rsp *pb.HelloReply) error{
+func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error{
 	// proxy 客户端调用桩函数或者调用代理，由trpc工具自动生成，内部调用client
 	proxy := ufr.NewUgcFollowReadClientProxy(
 		client.WithProtocol("trpc"),
@@ -44,8 +44,9 @@ func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, _ *pb.HelloRequ
 	ufrRsp,err := proxy.BathGetFansCount(context.Background(),ufrReq)
 	if err != nil {
 		log.Error(err)
+		log.Info(err)
 		return err
 	}
-	rsp.Msg = fmt.Sprintf("%#v", ufrRsp)
+	rsp.Msg = "[echo] " + fmt.Sprintf("%+v", ufrRsp)
 	return nil
 }
