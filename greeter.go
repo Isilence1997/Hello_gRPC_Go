@@ -47,6 +47,6 @@ func (s *greeterServiceImpl) BathGetFansCount(_ context.Context, _ *pb.HelloRequ
 		log.Info(err)
 		return err
 	}
-	rsp.Msg = "[echo] " + fmt.Sprintf("%#v", ufrRsp)
+	rsp.Msg = "[echo] " + fmt.Sprintf("FansCountMap : %v ",ufrRsp.FansCountMap)
 	return nil
 }
