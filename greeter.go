@@ -69,7 +69,7 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 	case 0xf3ca:
 		// 关注
 		ugcfiReq := &ugcfi.FollowReq{
-			FromUser: ugcfi.User{UserId:339607357 },ToUser: ugcfi.User{UserId:536164684},
+			FromUser: ugcfi.User{UserId: 536164684 },ToUser: ugcfi.User{UserId: 2454008777},
 		}
 		ugcfiRsp,err := proxy.SetFollow(context.Background(),ugcfiReq,opts...)
 		if err != nil{
@@ -81,7 +81,7 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 	case 0xf3cb:
 		// 取消关注
 		ugcfiReq := &ugcfi.FollowReq{
-			FromUser: ugcfi.User{UserId:339607357 },ToUser: ugcfi.User{UserId:536164684},
+			FromUser: ugcfi.User{UserId:536164684 },ToUser: ugcfi.User{UserId:2454008777},
 		}
 		ugcfiRsp,err := proxy.DelFollow(context.Background(),ugcfiReq,opts...)
 		if err != nil{
@@ -93,7 +93,7 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 	case 0xf3cc:
 		// 获取关注列表（翻页）
 		ugcfiReq := &ugcfi.QueryFollowVppsReq{
-			User:ugcfi.User{ UserId:339607357 },
+			User:ugcfi.User{ UserId:536164684 },
 		}
 		ugcfiRsp,err := proxy.QueryFollowVpps(context.Background(),ugcfiReq,opts...)
 		if err != nil{
@@ -101,11 +101,11 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 			return err
 		}
 		log.Infof("%+v", ugcfiRsp)
-		rsp.Msg = fmt.Sprintf("%v",ugcfiRsp.VecVppIds)
+		rsp.Msg = fmt.Sprintf("%v",ugcfiRsp)
 	case 0xf3cd:
 		// 获取粉丝列表信息(翻页)
 		ugcfiReq := &ugcfi.QueryFansListReq{
-			User:ugcfi.User{ UserId: 536164684},
+			User:ugcfi.User{ UserId:2454008777 },
 		}
 		ugcfiRsp,err := proxy.QueryFansList(context.Background(),ugcfiReq,opts...)
 		if err != nil{
@@ -117,7 +117,7 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 	case 0xf3ce:
 		// 查询a,b间的关注关系,1-关注、0-没关注和2-相互关注
 		ugcfiReq := &ugcfi.CheckFollowRelationReq{
-			From:ugcfi.User{ UserId:339607357 },ToUsers:[]ugcfi.User{{ UserId: 536164684}},
+			From:ugcfi.User{ UserId:536164684 },ToUsers:[]ugcfi.User{{ UserId:742676956}},
 		}
 		ugcfiRsp,err := proxy.CheckFollowRelation(context.Background(),ugcfiReq,opts...)
 		if err != nil{
@@ -125,11 +125,11 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 			return err
 		}
 		log.Info(ugcfiRsp)
-		rsp.Msg = fmt.Sprintf("%v",ugcfiRsp.Result)
+		rsp.Msg = fmt.Sprintf("%v",ugcfiRsp)
 	case 0xf18d:
 		// 查询a是否关注b,0-没关注，1-关注
 		ugcfiReq := &ugcfi.CheckFollowReq{
-			From:ugcfi.User{ UserId:339607357 },ToUsers:[]ugcfi.User{{ UserId: 536164684}},
+			From:ugcfi.User{ UserId:536164684 },ToUsers:[]ugcfi.User{{ UserId: 2454008777}},
 		}
 		ugcfiRsp,err := proxy.CheckFollow(context.Background(),ugcfiReq,opts...)
 		if err != nil{
@@ -141,7 +141,7 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 	case 0xf19b:
 		// 查询a是否是b的粉丝
 		ugcfiReq := &ugcfi.CheckFansReq{
-			From:ugcfi.User{ UserId:339607357 },ToUsers:[]ugcfi.User{{ UserId: 536164684}},
+			From:ugcfi.User{ UserId:536164684 },ToUsers:[]ugcfi.User{{ UserId: 2454008777}},
 		}
 		ugcfiRsp,err := proxy.CheckFans(context.Background(),ugcfiReq,opts...)
 		if err != nil{
