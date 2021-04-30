@@ -25,18 +25,17 @@ message HelloRequest {
   	     string msg = 1 [(validate.rules).string.min_len = 1]; 
 } 
 
- 
 message HelloReply { 
   	   string msg = 1; 
 } 
 service Greeter { 
       rpc SayHello (HelloRequest) returns (HelloReply);
-      //打印客户端请求
-      rpc GetUserInfo (HelloRequest) returns (HelloReply);
       //测试天机阁
       //rpc TestTjg(TestTjgReq) returns (TestTjgRsp);
       //测试tconf
       //rpc TestTconf(TestTconfReq) returns (TestTconfRsp);
-      //批量获取粉丝数接口
+      //调用trpc服务，批量获取粉丝数接口
       rpc BathGetFansCount(HelloRequest) returns (HelloReply);
+      //调用jce服务接口,获取用户信息
+      rpc GetUserInfo(HelloRequest) returns (HelloReply);
 } 

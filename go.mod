@@ -3,6 +3,7 @@ module git.code.oa.com/video_app_short_video/hello_alice
 go 1.12
 
 require (
+	git.code.oa.com/trpc-go/trpc-codec/videopacket v0.1.8
 	git.code.oa.com/trpc-go/trpc-config-tconf v0.1.8
 	git.code.oa.com/trpc-go/trpc-filter/debuglog v0.1.3
 	git.code.oa.com/trpc-go/trpc-filter/recovery v0.1.2
@@ -16,6 +17,8 @@ require (
 	git.code.oa.com/trpc-go/trpc-selector-cl5 v0.2.0
 	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.8
 	git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read v1.1.5
+	git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner v0.0.0-20210428070627-ca6dd116fbd9 // indirect
+	git.code.oa.com/videocommlib/videopacket-go v1.0.2 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/golang/mock v1.5.0
 	github.com/golang/protobuf v1.5.2 // indirect
@@ -23,7 +26,6 @@ require (
 	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/lestrrat-go/strftime v1.0.4 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
-	github.com/opentracing/opentracing-go v1.1.0
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/automaxprocs v1.4.0
 	go.uber.org/multierr v1.6.0 // indirect
