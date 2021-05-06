@@ -4,4 +4,4 @@ go.sum
 upload.sh
 *.log
 hello_alice_bak/
-greeter.proto
+protos/greeter.proto

@@ -15,11 +15,15 @@ require (
 	git.code.oa.com/trpc-go/trpc-naming-polaris v0.2.8
 	git.code.oa.com/trpc-go/trpc-opentracing-tjg v0.1.8
 	git.code.oa.com/trpc-go/trpc-selector-cl5 v0.2.0
-	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.8
+	git.code.oa.com/trpc-go/trpc-selector-dsn v0.1.3 // indirect
+	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.11
 	git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read v1.1.5
 	git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner v0.0.0-20210428070627-ca6dd116fbd9 // indirect
-	git.code.oa.com/videocommlib/videopacket-go v1.0.2 // indirect
+	git.code.oa.com/video_app_short_video/trpc_go_commonlib v0.0.0-20210414121907-cb9ebeb71f16 // indirect
+	git.code.oa.com/videocommlib/trpc-go-union v0.1.5 // indirect
+	git.code.oa.com/videocommlib/videopacket-go v1.0.4 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
+	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/mock v1.5.0
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
@@ -30,6 +34,6 @@ require (
 	go.uber.org/automaxprocs v1.4.0
 	go.uber.org/multierr v1.6.0 // indirect
 	golang.org/x/net v0.0.0-20210427231257-85d9c07bbe3a // indirect
-	golang.org/x/sys v0.0.0-20210426230700-d19ff857e887 // indirect
+	golang.org/x/sys v0.0.0-20210503173754-0981d6026fa6 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
