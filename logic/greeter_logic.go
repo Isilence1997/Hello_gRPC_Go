@@ -161,6 +161,6 @@ func AcessRedis(ctx context.Context)(string,error){
 		log.Errorf("AcessRedisZset error:%v", err)
 		return "", err
 	}
-	redisRsp += fmt.Sprintf("zset: %v",zsetRsp)
+	redisRsp += fmt.Sprintf("zset:%v",zsetRsp)
 	return redisRsp, nil
 }

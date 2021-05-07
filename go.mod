@@ -3,6 +3,7 @@ module git.code.oa.com/video_app_short_video/hello_alice
 go 1.12
 
 require (
+	git.code.oa.com/polaris/polaris-go v0.8.1 // indirect
 	git.code.oa.com/trpc-go/trpc-codec/videopacket v0.1.8
 	git.code.oa.com/trpc-go/trpc-config-tconf v0.1.8
 	git.code.oa.com/trpc-go/trpc-database/goredis v0.0.1 // indirect
@@ -25,6 +26,7 @@ require (
 	git.code.oa.com/videocommlib/trpc-go-union v0.1.5 // indirect
 	git.code.oa.com/videocommlib/videopacket-go v1.0.4 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
+	github.com/go-redis/redis/v8 v8.8.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/mock v1.5.0
 	github.com/golang/protobuf v1.5.2 // indirect
