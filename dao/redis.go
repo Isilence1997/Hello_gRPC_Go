@@ -90,11 +90,11 @@ func AcessRedisZset(ctx context.Context) (rsp string,err error) {
 		log.Errorf("InitRedisProxy fail err=[%v]\n", err)
 		return "",err
 	}
-	intResult, err := cli.ZAdd(ctx, "myzset", ).Result()
-	if err != nil {
-		log.Errorf("ZAdd fail err=[%v]\n", err)
-		return "", err
-	}
-	rsp += fmt.Sprintf("ZAdd result=[%v]\n",intResult)
+//	intResult, err := cli.ZAdd(ctx, "myzset", ).Result()
+	//if err != nil {
+	//	log.Errorf("ZAdd fail err=[%v]\n", err)
+	//	return "", err
+	//}
+	//rsp += fmt.Sprintf("ZAdd result=[%v]\n",intResult)
 	return rsp, nil
 }
