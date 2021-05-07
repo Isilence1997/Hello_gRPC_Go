@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"git.code.oa.com/trpc-go/trpc-database/goredis"
 	"git.code.oa.com/trpc-go/trpc-go/log"
+	"github.com/go-redis/redis/v8"
 )
 
 // 对redis中的string类型进行操作
@@ -90,11 +91,29 @@ func AcessRedisZset(ctx context.Context) (rsp string,err error) {
 		log.Errorf("InitRedisProxy fail err=[%v]\n", err)
 		return "",err
 	}
-//	intResult, err := cli.ZAdd(ctx, "myzset", ).Result()
-	//if err != nil {
-	//	log.Errorf("ZAdd fail err=[%v]\n", err)
-	//	return "", err
-	//}
-	//rsp += fmt.Sprintf("ZAdd result=[%v]\n",intResult)
+	intResult, err := cli.ZAdd(ctx, "myzset", &redis.Z{Member:"one",Score:1} ).Result()
+	if err != nil {
+		log.Errorf("ZAdd fail err=[%v]\n", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("ZAdd result=[%v]\n",intResult)
+	intResult, err = cli.ZAdd(ctx, "myzset",&redis.Z{Member: "three",Score: 3},&redis.Z{Member: "two",Score: 2}).Result()
+	if err != nil {
+		log.Errorf("ZSet fail err=[%v]\n", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("ZSet result=[%v]\n",intResult)
+	strResult,err := cli.ZRange(ctx,"myzset",0,-1).Result()
+	if err != nil {
+		log.Errorf("ZRange fail err=[%v]\n", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("ZRange result=[%v]\n",strResult)
+	intResult,err = cli.ZRem(ctx,"myzset","three").Result()
+	if err != nil {
+		log.Errorf("ZRem fail err=[%v]\n", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("ZRem result=[%v]\n",intResult)
 	return rsp, nil
 }
