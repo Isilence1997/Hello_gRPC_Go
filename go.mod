@@ -5,6 +5,8 @@ go 1.12
 require (
 	git.code.oa.com/trpc-go/trpc-codec/videopacket v0.1.8
 	git.code.oa.com/trpc-go/trpc-config-tconf v0.1.8
+	git.code.oa.com/trpc-go/trpc-database/goredis v0.0.1 // indirect
+	git.code.oa.com/trpc-go/trpc-database/redis v0.1.7 // indirect
 	git.code.oa.com/trpc-go/trpc-filter/debuglog v0.1.3
 	git.code.oa.com/trpc-go/trpc-filter/recovery v0.1.2
 	git.code.oa.com/trpc-go/trpc-filter/validation v0.1.1
@@ -27,6 +29,7 @@ require (
 	github.com/golang/mock v1.5.0
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
+	github.com/gomodule/redigo v1.8.4 // indirect
 	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/lestrrat-go/strftime v1.0.4 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect

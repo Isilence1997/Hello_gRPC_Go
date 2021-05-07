@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 	"fmt"
+	"git.code.oa.com/video_app_short_video/hello_alice/dao"
 	"git.code.oa.com/video_app_short_video/hello_alice/model"
 	"strconv"
 	"time"
@@ -12,7 +13,6 @@ import (
 	"git.code.oa.com/trpc-go/trpc-go/client"
 	"git.code.oa.com/trpc-go/trpc-go/codec"
 	"git.code.oa.com/trpc-go/trpc-go/log"
-
 	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
 	ufr "git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read"
 	ugcfi "git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner"
@@ -128,8 +128,8 @@ func ReadUnion2071(req *pb.HelloRequest)(unionRsp map[string]model.SocietyUserIn
 	//调用proxy，返回定义好的数据类型SocietyUserInfoUnion2071
 	err = proxy.GetUnion(uint32(2071),[]string{vuid},unionRsp,
 	client.WithNamespace("Production"),
-	client.WithServiceName("trpc.union.union.union"),
-	client.WithTarget("polaris://243969:65536"),//243969:65536 139009:65536
+	client.WithServiceName("trpc.union.union.union"),// service name自己随便填，主要用于监控上报和寻找配置项
+	client.WithTarget("polaris://243969:65536"),
 //	client.WithTimeout(800),
 	)
 	if err!=nil{
@@ -141,4 +141,26 @@ func ReadUnion2071(req *pb.HelloRequest)(unionRsp map[string]model.SocietyUserIn
 		return nil,fmt.Errorf("vuid info not exists", vuid)
 	}
 	return unionRsp,nil
+}
+
+func AcessRedis(ctx context.Context)(string,error){
+	stringRsp,err := dao.AcessRedisString(ctx)
+	if err!=nil {
+		log.Errorf("AcessRedisString error:%v", err)
+		return "", err
+	}
+	redisRsp := fmt.Sprintf("string: %v",stringRsp)
+	hashRsp,err := dao.AcessRedisHash(ctx)
+	if err!=nil {
+		log.Errorf("AcessRedisHash error:%v", err)
+		return "", err
+	}
+	redisRsp += fmt.Sprintf("hash: %v",hashRsp)
+	zsetRsp,err := dao.AcessRedisZset(ctx)
+	if err!=nil {
+		log.Errorf("AcessRedisZset error:%v", err)
+		return "", err
+	}
+	redisRsp += fmt.Sprintf("zset: %v",zsetRsp)
+	return redisRsp, nil
 }

@@ -44,7 +44,7 @@ func (s *greeterServiceImpl) GetUserInfo(_ context.Context, req *pb.HelloRequest
 	return nil
 }
 
-//ReadUnion 读取union 2071表的用户信息
+//ReadUnion 读取union 2071表,获取用户头像和用户昵称
 func (s *greeterServiceImpl) ReadUnion(_ context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error{
 	unionRsp,err :=logic.ReadUnion2071(req)
 	if err!=nil {
@@ -54,5 +54,16 @@ func (s *greeterServiceImpl) ReadUnion(_ context.Context, req *pb.HelloRequest, 
 	}
 	log.Infof("%v", unionRsp)
 	rsp.Msg = fmt.Sprintf("UserHead: %v UserNick: %v", unionRsp[req.Msg].UserHead,unionRsp[req.Msg].UserNick)
+	return nil
+}
+
+// AcessRedis 对redis进行操作
+func (s *greeterServiceImpl) AcessRedis(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+	redisRsp, err := logic.AcessRedis(ctx)
+	if err != nil {
+		log.Errorf("%v",err)
+		return err
+	}
+	rsp.Msg = redisRsp
 	return nil
 }
