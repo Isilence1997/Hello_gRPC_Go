@@ -18,7 +18,7 @@ require (
 	git.code.oa.com/trpc-go/trpc-opentracing-tjg v0.1.8
 	git.code.oa.com/trpc-go/trpc-selector-cl5 v0.2.0
 	git.code.oa.com/trpc-go/trpc-selector-dsn v0.1.3 // indirect
-	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.11
+	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.12
 	git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read v1.1.5
 	git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner v0.0.0-20210428070627-ca6dd116fbd9 // indirect
 	git.code.oa.com/video_app_short_video/trpc_go_commonlib v0.0.0-20210414121907-cb9ebeb71f16 // indirect
