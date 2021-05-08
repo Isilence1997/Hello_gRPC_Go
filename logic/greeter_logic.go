@@ -142,7 +142,7 @@ func ReadUnion2071(req *pb.HelloRequest)(unionRsp map[string]model.SocietyUserIn
 	}
 	return unionRsp,nil
 }
-
+//
 func AcessRedis(ctx context.Context)(string,error){
 	stringRsp,err := dao.AcessRedisString(ctx)
 	if err!=nil {
@@ -163,4 +163,51 @@ func AcessRedis(ctx context.Context)(string,error){
 	}
 	redisRsp += fmt.Sprintf("zset:%v",zsetRsp)
 	return redisRsp, nil
+}
+
+func AcessMysql(ctx context.Context)(string,error){
+	//create table
+	mysqlRsp, err := dao.AcessMysqlInit(ctx)
+	if err != nil {
+		err=fmt.Errorf("TestMysqlInit error, err:%+v", err)
+		return "", err
+	}
+	rsp := fmt.Sprintf("Create:%s ",mysqlRsp)
+	// insert
+	mysqlRsp, err = dao.AcessMysqlInsert(ctx)
+	if err != nil {
+		err = fmt.Errorf("TestMysqlInsert error, err:%+v", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("Insert:%s ",mysqlRsp)
+	// update
+	mysqlRsp,err = dao.AcessMysqlUpdate(ctx)
+	if err != nil {
+		err = fmt.Errorf("TestMysqlUpdate error, err:%+v", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("Update:%s ",mysqlRsp)
+	// select
+	mysqlRsp,err = dao.AcessMysqlSelect(ctx)
+	if err != nil {
+		err = fmt.Errorf("TestMysqlSelect error, err:%+v", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("Selete:%s ",mysqlRsp)
+	// delete
+	mysqlRsp,err = dao.AcessMysqlDelete(ctx)
+	if err != nil {
+		err = fmt.Errorf("TestMysqlDelete error, err:%+v", err)
+		return "", err
+	}
+	rsp += fmt.Sprintf("Delete:%s ",mysqlRsp)
+	return rsp, nil
+}
+
+func AcessWuji(uid string) (string,error) {
+	err := dao.GetWujiContent(uid)
+	if err != nil {
+		log.Errorf("AcessWuji error, err:%+v", err)
+	}
+	return nil
 }

@@ -3,11 +3,12 @@ module git.code.oa.com/video_app_short_video/hello_alice
 go 1.12
 
 require (
+	git.code.oa.com/open-wuji/go-sdk v1.2.2 // indirect
 	git.code.oa.com/polaris/polaris-go v0.8.1 // indirect
 	git.code.oa.com/trpc-go/trpc-codec/videopacket v0.1.8
 	git.code.oa.com/trpc-go/trpc-config-tconf v0.1.8
-	git.code.oa.com/trpc-go/trpc-database/goredis v0.0.1 // indirect
-	git.code.oa.com/trpc-go/trpc-database/redis v0.1.7 // indirect
+	git.code.oa.com/trpc-go/trpc-database/mysql v0.1.6
+	git.code.oa.com/trpc-go/trpc-database/redis v0.1.7
 	git.code.oa.com/trpc-go/trpc-filter/debuglog v0.1.3
 	git.code.oa.com/trpc-go/trpc-filter/recovery v0.1.2
 	git.code.oa.com/trpc-go/trpc-filter/validation v0.1.1
@@ -19,12 +20,12 @@ require (
 	git.code.oa.com/trpc-go/trpc-opentracing-tjg v0.1.8
 	git.code.oa.com/trpc-go/trpc-selector-cl5 v0.2.0
 	git.code.oa.com/trpc-go/trpc-selector-dsn v0.1.3 // indirect
-	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.12
+	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.13
 	git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read v1.1.5
-	git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner v0.0.0-20210428070627-ca6dd116fbd9 // indirect
+	git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner v0.0.0-20210428070627-ca6dd116fbd9
 	git.code.oa.com/video_app_short_video/trpc_go_commonlib v0.0.0-20210414121907-cb9ebeb71f16 // indirect
-	git.code.oa.com/videocommlib/trpc-go-union v0.1.5 // indirect
-	git.code.oa.com/videocommlib/videopacket-go v1.0.4 // indirect
+	git.code.oa.com/videocommlib/trpc-go-union v0.1.5
+	git.code.oa.com/videocommlib/videopacket-go v1.0.4
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/go-redis/redis/v8 v8.8.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect

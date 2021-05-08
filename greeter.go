@@ -67,3 +67,22 @@ func (s *greeterServiceImpl) AcessRedis(ctx context.Context, req *pb.HelloReques
 	rsp.Msg = redisRsp
 	return nil
 }
+
+func (s *greeterServiceImpl) AcessMysql(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+	mysqlRsp, err := logic.AcessMysql(ctx)
+	if err != nil {
+		log.Errorf("%v",err)
+		return err
+	}
+	rsp.Msg = mysqlRsp
+	return nil
+}
+func (s *greeterServiceImpl) AcessWuji(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+	wujiRsp, err := logic.AcessWuji(req.Msg)
+	if err != nil {
+		log.Errorf("%v",err)
+		return err
+	}
+	rsp.Msg = wujiRsp
+	return nil
+}
