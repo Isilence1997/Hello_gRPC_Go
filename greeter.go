@@ -78,7 +78,8 @@ func (s *greeterServiceImpl) AcessMysql(ctx context.Context, req *pb.HelloReques
 	return nil
 }
 func (s *greeterServiceImpl) AcessWuji(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
-	wujiRsp, err := logic.AcessWuji(req.Msg)
+	id := req.Msg
+	wujiRsp, err := logic.AcessWuji(id)
 	if err != nil {
 		log.Errorf("%v",err)
 		return err

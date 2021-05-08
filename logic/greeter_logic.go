@@ -204,10 +204,11 @@ func AcessMysql(ctx context.Context)(string,error){
 	return rsp, nil
 }
 
-func AcessWuji(uid string) (string,error) {
-	err := dao.GetWujiContent(uid)
+func AcessWuji(id string) (string,error) {
+	rsp,err := dao.GetWujiContent(id)
 	if err != nil {
 		log.Errorf("AcessWuji error, err:%+v", err)
+		return "",err
 	}
-	return nil
+	return rsp,nil
 }
