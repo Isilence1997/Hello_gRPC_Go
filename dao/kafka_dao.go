@@ -39,8 +39,8 @@ func ProcedueKafka(ctx context.Context) (rsp string,err error) {
 			return "",err
 		}
 		time.Sleep(time.Millisecond * 50)
-		rsp += fmt.Sprintf("toVuid:%d, fromVuid:%d, timestamp:%+v ",
-			msg.ToVuid, msg.FromVuid, msg.Timestamp)
+		log.Infof("kafka Produce toVuid:%d, fromVuid:%d, timestamp:%+v ",msg.ToVuid, msg.FromVuid, msg.Timestamp)
+		rsp += fmt.Sprintf("toVuid:%d, fromVuid:%d, timestamp:%+v ", msg.ToVuid, msg.FromVuid, msg.Timestamp)
 	}
 	return rsp,nil
 }
@@ -57,14 +57,15 @@ func ConsumeKafkaMsgHandler(_ context.Context, key, value []byte, topic string,
 	partition int32, offset int64) error {
 	kafakRsp := fmt.Sprintf("ConsumeKafkaMsgHandler, [key]%v, [value]%v, [topic]%v, [partition]%v, [offset]%v", string(key),
 		string(value), topic, partition, offset)
+	log.Info(kafakRsp)
 	// 创建对象，反序列化
 	var followWriteKafkaMsg model.FollowWriteKafkaMsg
 	err := json.Unmarshal(value, &followWriteKafkaMsg)
 	if err != nil {
-		err = fmt.Errorf("ConsumeKafkaMsgHandler json.Unmarshal error, value:%s, topic:%s,"+
+		log.Errorf("ConsumeKafkaMsgHandler json.Unmarshal error, value:%s, topic:%s,"+
 			" partition:%d, offset:%d, err:%v", string(value), topic, partition, offset, err)
 		return err
 	}
-	log.Infof("%s %v",kafakRsp, followWriteKafkaMsg)
+	log.Infof("%v", followWriteKafkaMsg)
 	return nil
 }

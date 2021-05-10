@@ -25,7 +25,8 @@ func InitMysqlProxy() error{
 		"trpc.mysql.mysql.mysql",
 		//dsn://user:passwd@tcp(vip:port)/db?timeout=1s&parseTime=true&interpolateParams=true")  mdb使用域名多实例需要加上 &interpolateParams=true
 		client.WithTarget("dsn://writeuser:X2tRGVv4jirx3aKr@tcp(shortvideotest.mdb.mig:17073)/mysql_demo?timeout=1s&parseTime=true&interpolateParams=true"),
-	)
+		//client.WithTarget("dsn://root:gZtEj*7425qr@tcp(9.135.221.147:3306)/mysql_demo?timeout=1s&parseTime=true&interpolateParams=true"),
+		)
 	// 测试是否连接成功
 	var res int
 	next := func(rows *sql.Rows) error {
@@ -38,9 +39,8 @@ func InitMysqlProxy() error{
 	err := mysqlClientProxy.Query(context.Background(), next, "SELECT 1")//增加临时列，列值为1
 	return err
 }
-//create
+//create 创建表
 func AcessMysqlInit(ctx context.Context) (rsp string,err error) {
-	//创建表
 	sqlStr := fmt.Sprintf("create table if not exists %s (`id` int(11) NOT NULL AUTO_INCREMENT,`name` varchar(30),`age` int(11),PRIMARY KEY (`id`));", defaultTableName)
 	result, err := mysqlClientProxy.Exec(ctx, sqlStr)
 	if err != nil {

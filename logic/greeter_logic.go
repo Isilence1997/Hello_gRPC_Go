@@ -167,19 +167,21 @@ func AcessRedis(ctx context.Context)(string,error){
 
 func AcessMysql(ctx context.Context)(string,error){
 	//create table
+	/*
 	mysqlRsp, err := dao.AcessMysqlInit(ctx)
 	if err != nil {
 		err=fmt.Errorf("TestMysqlInit error, err:%+v", err)
 		return "", err
 	}
 	rsp := fmt.Sprintf("Create:%s ",mysqlRsp)
+	 */
 	// insert
-	mysqlRsp, err = dao.AcessMysqlInsert(ctx)
+	mysqlRsp, err := dao.AcessMysqlInsert(ctx)
 	if err != nil {
 		err = fmt.Errorf("TestMysqlInsert error, err:%+v", err)
 		return "", err
 	}
-	rsp += fmt.Sprintf("Insert:%s ",mysqlRsp)
+	rsp := fmt.Sprintf("Insert:%s ",mysqlRsp)
 	// update
 	mysqlRsp,err = dao.AcessMysqlUpdate(ctx)
 	if err != nil {

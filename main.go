@@ -47,7 +47,7 @@ func main() {
 	ServiceInit()
 	// 注册kafka消费handler,多个service的情况下 kafka.RegisterHandlerService(s.Service("name"), handle)
 	// 没有指定name的情况，代表所有service共用同一个handler
-	kafka.RegisterHandlerService(s, dao.ConsumeKafkaMsgHandler)
+	kafka.RegisterHandlerService(s.Service("trpc.video_app_short_video.hello_alice.consumer"), dao.ConsumeKafkaMsgHandler)
 	pb.RegisterGreeterService(s, &greeterServiceImpl{})
 
 	if err := s.Serve(); err != nil {
