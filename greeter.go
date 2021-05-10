@@ -87,3 +87,13 @@ func (s *greeterServiceImpl) AcessWuji(ctx context.Context, req *pb.HelloRequest
 	rsp.Msg = wujiRsp
 	return nil
 }
+
+func (s *greeterServiceImpl) AcessKafka(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+	kafkaRsp, err := logic.AcessKafka(ctx)
+	if err != nil {
+		log.Errorf("%v",err)
+		return err
+	}
+	rsp.Msg = kafkaRsp
+	return nil
+}

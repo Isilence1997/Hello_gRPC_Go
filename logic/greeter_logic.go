@@ -212,3 +212,11 @@ func AcessWuji(id string) (string,error) {
 	}
 	return rsp,nil
 }
+func AcessKafka(ctx context.Context) (string,error) {
+	rsp,err := dao.ProcedueKafka(ctx)
+	if err != nil {
+		log.Errorf("AcessKafka error, err:%+v", err)
+		return "",err
+	}
+	return rsp,nil
+}

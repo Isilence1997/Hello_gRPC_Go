@@ -12,7 +12,7 @@ var (
 )
 
 //初始化wuji
-func initWujiProxy()(err error){
+func InitWujiProxy()(err error){
 	wujiClientProxy, err = wuji.NewClient(
 		wuji.WithAppID("hello_alice"),
 		wuji.WithSchemaID("wuji_table_demo"),
@@ -29,18 +29,14 @@ func initWujiProxy()(err error){
 
 //获取无极表内容
 func GetWujiContent(id string)(string,error){
-	err := initWujiProxy()
-	if err!= nil {
-		return "",err
-	}
 	var obj model.WujiData
-	err = wujiClientProxy.Get(id,&obj)
+	err := wujiClientProxy.Get(id,&obj)//得到指定id的内容
 	if err != nil {
 		err = fmt.Errorf("Get error: %v",err)
 		return "", err
 	}
-	wujiRsp := fmt.Sprintf("GetWujiContent: %v",obj)
-	raws := wujiClientProxy.GetKeys()
+	wujiRsp := fmt.Sprintf("Get: id:%d name:%s ",obj.ID,obj.Name)
+	raws := wujiClientProxy.GetKeys()//获取所有的key
 	if raws == nil || len(raws) == 0{
 		return "",fmt.Errorf("GetKeys error")
 	}

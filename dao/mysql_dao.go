@@ -20,11 +20,11 @@ var (
 )
 
 //初始化mysql
-func initMysqlProxy() error{
+func InitMysqlProxy() error{
 	mysqlClientProxy = mysql.NewClientProxy(
 		"trpc.mysql.mysql.mysql",
 		//dsn://user:passwd@tcp(vip:port)/db?timeout=1s&parseTime=true&interpolateParams=true")  mdb使用域名多实例需要加上 &interpolateParams=true
-		client.WithTarget("dsn://readuser:uFW0Q_47thjeWM@tcp(shortvideotest.mdb.mig:17073)/mysql?timeout=1s&parseTime=true&interpolateParams=true"),
+		client.WithTarget("dsn://writeuser:X2tRGVv4jirx3aKr@tcp(shortvideotest.mdb.mig:17073)/mysql_demo?timeout=1s&parseTime=true&interpolateParams=true"),
 	)
 	// 测试是否连接成功
 	var res int
@@ -40,15 +40,8 @@ func initMysqlProxy() error{
 }
 //create
 func AcessMysqlInit(ctx context.Context) (rsp string,err error) {
-	err = initMysqlProxy()
-	if err != nil {
-		err = fmt.Errorf("InitMDBClientProxy exec sql `SELECT 1` error, err:%v", err)
-		return "", err
-	}
-	rsp = "connect to mysql successfully!"
-
 	//创建表
-	sqlStr := fmt.Sprintf("create table %s (`id` int(11) NOT NULL AUTO_INCREMENT,`name` varchar(30),`age` int(11),PRIMARY KEY (`id`));", defaultTableName)
+	sqlStr := fmt.Sprintf("create table if not exists %s (`id` int(11) NOT NULL AUTO_INCREMENT,`name` varchar(30),`age` int(11),PRIMARY KEY (`id`));", defaultTableName)
 	result, err := mysqlClientProxy.Exec(ctx, sqlStr)
 	if err != nil {
 		err = fmt.Errorf("create table error, err:%+v", err)
@@ -86,6 +79,24 @@ func AcessMysqlSelect(ctx context.Context) (rsp string,err error){
 	}
 	for i,user := range users{
 		rsp += fmt.Sprintf("%d : %+v",i,user)
+	}
+	users = make([]model.User, 0)
+	// 框架底层自动for循环rows调用该next函数
+	var user model.User
+	next := func(rows *sql.Rows) error {
+		err := rows.Scan(&user.Id, &user.Name, &user.Age)
+		if err != nil {
+			return err
+		}
+		users = append(users, user)
+		return nil
+	}
+	// 读取所有字段，select字段尽量只select自己关心的字段，不要用*
+	sqlStr = fmt.Sprintf("select * from %s limit ?", defaultTableName)
+	err = mysqlClientProxy.Query(ctx, next, sqlStr, 100)
+	if err != nil {
+		err = fmt.Errorf("select error, err:%+v", err)
+		return "",err
 	}
 	return rsp, nil
 }

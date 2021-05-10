@@ -13,10 +13,11 @@ var (
 	redisClientProxy redis.Client
 )
 //初始化请求接口
-func initClientProxy() error{
+func InitRedisProxy() error{
 	redisClientProxy = redis.NewClientProxy(
 		"trpc.redis.redis.redis",
 		client.WithNamespace("Production"),
+		//"redis+polaris://:pwd@zkname"
 		client.WithTarget("redis+polaris://:AzNIBb*PbIWQSJ,rwQ@sz4678.shortvideotest.redis.com"),
 		)
 	do, err := redisClientProxy.Do(context.Background(), "PING")
@@ -29,10 +30,6 @@ func initClientProxy() error{
 }
 // 对redis中的string类型进行操作
 func AcessRedisString(ctx context.Context) (rsp string,err error) {
-	err = initClientProxy()
-	if err!=nil{
-		return "", err
-	}
 	strResult, err := redis.String(redisClientProxy.Do(ctx, "SET", "key1", "hello"))
 	if err != nil {
 		log.Errorf("Set fail err=[%v]\n ", err)
