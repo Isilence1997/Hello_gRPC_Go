@@ -7,6 +7,8 @@ import (
 	"git.code.oa.com/trpc-go/trpc-database/redis"
 	"git.code.oa.com/trpc-go/trpc-go/client"
 	"git.code.oa.com/trpc-go/trpc-go/log"
+
+	"git.code.oa.com/video_app_short_video/hello_alice/config"
 )
 var (
 	// redis 客户端代理
@@ -14,11 +16,13 @@ var (
 )
 //初始化请求接口
 func InitRedisProxy() error{
+	serviceConfig := config.GetConfig()
+	redisConfig := serviceConfig.Redis
 	redisClientProxy = redis.NewClientProxy(
-		"trpc.redis.redis.redis",
-		client.WithNamespace("Production"),
+		redisConfig.ServiceName,
+		client.WithNamespace(redisConfig.Namespace),
 		//"redis+polaris://:pwd@zkname"
-		client.WithTarget("redis+polaris://:AzNIBb*PbIWQSJ,rwQ@sz4678.shortvideotest.redis.com"),
+		client.WithTarget(fmt.Sprintf("redis+polaris://:%s@%s",redisConfig.Pwd,redisConfig.ObjName)),
 		)
 	do, err := redisClientProxy.Do(context.Background(), "PING")
 	if err != nil {

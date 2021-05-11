@@ -2,6 +2,8 @@ package main
 
 import (
 	"git.code.oa.com/trpc-go/trpc-database/kafka"
+	"git.code.oa.com/video_app_short_video/hello_alice/common"
+	"git.code.oa.com/video_app_short_video/hello_alice/config"
 	_ "go.uber.org/automaxprocs"
 
 	_ "git.code.oa.com/trpc-go/trpc-config-tconf"
@@ -25,6 +27,8 @@ type greeterServiceImpl struct{}
 
 // 服务初始化
 func ServiceInit() {
+	// 初始化服务配置
+	config.InitServiceConfig()
 	// 初始化mysql
 	err := dao.InitMysqlProxy()
 	if err != nil {
@@ -39,7 +43,10 @@ func ServiceInit() {
 	if err := dao.InitWujiProxy(); err != nil {
 		panic(err)
 	}
-	// 初始化union
+	// 初始化atta
+	if err := common.InitAtta();err != nil {
+		panic(err)
+	}
 }
 func main() {
 
@@ -47,7 +54,8 @@ func main() {
 	ServiceInit()
 	// 注册kafka消费handler,多个service的情况下 kafka.RegisterHandlerService(s.Service("name"), handle)
 	// 没有指定name的情况，代表所有service共用同一个handler
-	kafka.RegisterHandlerService(s.Service("trpc.video_app_short_video.hello_alice.consumer"), dao.ConsumeKafkaMsgHandler)
+	//kafka.RegisterHandlerService(s.Service("trpc.video_app_short_video.hello_alice.consumer"), dao.ConsumeKafkaMsgHandler)
+	kafka.RegisterHandlerService(s, dao.ConsumeKafkaMsgHandler)
 	pb.RegisterGreeterService(s, &greeterServiceImpl{})
 
 	if err := s.Serve(); err != nil {

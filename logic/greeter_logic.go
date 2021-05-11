@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 	"fmt"
+	"git.code.oa.com/video_app_short_video/hello_alice/common"
 	"git.code.oa.com/video_app_short_video/hello_alice/dao"
 	"git.code.oa.com/video_app_short_video/hello_alice/model"
 	"strconv"
@@ -16,7 +17,6 @@ import (
 	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
 	ufr "git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read"
 	ugcfi "git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner"
-	union "git.code.oa.com/videocommlib/trpc-go-union" //trpc-go 操作union包
 	p "git.code.oa.com/videocommlib/videopacket-go"
 )
 const (
@@ -114,6 +114,10 @@ func GetUserInfo(req *pb.HelloRequest)(ugcfiRsp interface{},err error) {
 		}
 		return proxy.GetFansCount(context.Background(),ugcfiReq,opts...)
 	default:
+		result := common.AttaSendFields(fmt.Sprintf("%s,not found command",req.Msg), "JCE service GetUserInfo error")
+		if result != 0 {
+			log.Errorf("GetUserInfo atta SendFields(), result:" + strconv.Itoa(result))
+		}
 		return nil,fmt.Errorf("%s,not found command",req.Msg)
 	}
 }
@@ -122,43 +126,47 @@ func GetUserInfo(req *pb.HelloRequest)(ugcfiRsp interface{},err error) {
 func ReadUnion2071(req *pb.HelloRequest)(unionRsp map[string]model.SocietyUserInfoUnion2071,err error){
 	//输入用户id
 	vuid := req.Msg
-	unionRsp = make(map[string]model.SocietyUserInfoUnion2071)
-	//初始化union proxy
-	proxy := union.NewParamUnionProxy("union",8,20002564,"0993ef6bbd651722","")
-	//调用proxy，返回定义好的数据类型SocietyUserInfoUnion2071
-	err = proxy.GetUnion(uint32(2071),[]string{vuid},unionRsp,
-	client.WithNamespace("Production"),
-	client.WithServiceName("trpc.union.union.union"),// service name自己随便填，主要用于监控上报和寻找配置项
-	client.WithTarget("polaris://243969:65536"),
-//	client.WithTimeout(800),
-	)
+	unionRsp, err = dao.ReadUnion2071(vuid)
 	if err!=nil{
 		log.Errorf("GetFromUnion2071 vuid:%v, err: %v", vuid, err)
+		result := common.AttaSendFields(fmt.Sprintf("Can't get vuid:%v's information",vuid),"ReadUnion2071 error")
+		if result != 0 {
+			log.Errorf("ReadUnion2071 atta SendFields(), result:" + strconv.Itoa(result))
+		}
 		return nil, err
-	}
-	_ , ok := unionRsp[vuid]
-	if !ok {
-		return nil,fmt.Errorf("vuid info not exists", vuid)
 	}
 	return unionRsp,nil
 }
-//
+
+// AcessRedis 对redis的三种数据类型进行操作
 func AcessRedis(ctx context.Context)(string,error){
 	stringRsp,err := dao.AcessRedisString(ctx)
 	if err!=nil {
 		log.Errorf("AcessRedisString error:%v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err),"AcessRedisString error")
+		if result != 0 {
+			log.Errorf("AcessRedisString atta SendFields(), result:" + strconv.Itoa(result))
+		}
 		return "", err
 	}
 	redisRsp := fmt.Sprintf("string: %v",stringRsp)
 	hashRsp,err := dao.AcessRedisHash(ctx)
 	if err!=nil {
 		log.Errorf("AcessRedisHash error:%v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err),"AcessRedisHash error")
+		if result != 0 {
+			log.Errorf("AcessRedisHash atta SendFields(), result:" + strconv.Itoa(result))
+		}
 		return "", err
 	}
 	redisRsp += fmt.Sprintf("hash: %v",hashRsp)
 	zsetRsp,err := dao.AcessRedisZset(ctx)
 	if err!=nil {
 		log.Errorf("AcessRedisZset error:%v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err),"AcessRedisZset error")
+		if result != 0 {
+			log.Errorf("AcessRedisZset atta SendFields(), result:" + strconv.Itoa(result))
+		}
 		return "", err
 	}
 	redisRsp += fmt.Sprintf("zset:%v",zsetRsp)
@@ -186,6 +194,8 @@ func AcessMysql(ctx context.Context)(string,error){
 	mysqlRsp,err = dao.AcessMysqlUpdate(ctx)
 	if err != nil {
 		err = fmt.Errorf("TestMysqlUpdate error, err:%+v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err), "AcessMysqlUpdate error")
+		log.Infof("AcessMysqlUpdate atta SendString(), result:" + strconv.Itoa(result))
 		return "", err
 	}
 	rsp += fmt.Sprintf("Update:%s ",mysqlRsp)
@@ -193,6 +203,8 @@ func AcessMysql(ctx context.Context)(string,error){
 	mysqlRsp,err = dao.AcessMysqlSelect(ctx)
 	if err != nil {
 		err = fmt.Errorf("TestMysqlSelect error, err:%+v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err), "AcessMysqlSelect error")
+		log.Infof("AcessMysqlSelect atta SendString(), result:" + strconv.Itoa(result))
 		return "", err
 	}
 	rsp += fmt.Sprintf("Selete:%s ",mysqlRsp)
@@ -200,6 +212,8 @@ func AcessMysql(ctx context.Context)(string,error){
 	mysqlRsp,err = dao.AcessMysqlDelete(ctx)
 	if err != nil {
 		err = fmt.Errorf("TestMysqlDelete error, err:%+v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err), "AcessMysqlDelete error")
+		log.Infof("AcessMysqlDelete atta SendString(), result:" + strconv.Itoa(result))
 		return "", err
 	}
 	rsp += fmt.Sprintf("Delete:%s ",mysqlRsp)
@@ -210,6 +224,8 @@ func AcessWuji(id string) (string,error) {
 	rsp,err := dao.GetWujiContent(id)
 	if err != nil {
 		log.Errorf("AcessWuji error, err:%+v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err), "GetWujiContent error")
+		log.Infof("GetWujiContent atta SendString(), result:" + strconv.Itoa(result))
 		return "",err
 	}
 	return rsp,nil
@@ -218,6 +234,8 @@ func AcessKafka(ctx context.Context) (string,error) {
 	rsp,err := dao.ProcedueKafka(ctx)
 	if err != nil {
 		log.Errorf("AcessKafka error, err:%+v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err), "GetWujiContent error")
+		log.Infof("GetWujiContent atta SendString(), result:" + strconv.Itoa(result))
 		return "",err
 	}
 	return rsp,nil

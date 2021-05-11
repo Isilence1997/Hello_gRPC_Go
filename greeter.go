@@ -3,12 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
-
 	"git.code.oa.com/video_app_short_video/hello_alice/logic"
 
-	"git.code.oa.com/trpc-go/trpc-go/log"
 	_ "git.code.oa.com/trpc-go/trpc-codec/videopacket"
 	_ "git.code.oa.com/trpc-go/trpc-filter/validation"
+	"git.code.oa.com/trpc-go/trpc-go/log"
 
 	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
 )

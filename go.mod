@@ -3,6 +3,7 @@ module git.code.oa.com/video_app_short_video/hello_alice
 go 1.12
 
 require (
+	git.code.oa.com/atta/attaapi_go v1.6.5 // indirect
 	git.code.oa.com/open-wuji/go-sdk v1.2.2
 	git.code.oa.com/trpc-go/trpc-codec/videopacket v0.1.8
 	git.code.oa.com/trpc-go/trpc-config-tconf v0.1.8
@@ -41,5 +42,6 @@ require (
 	golang.org/x/net v0.0.0-20210508051633-16afe75a6701 // indirect
 	golang.org/x/sys v0.0.0-20210507161434-a76c4d0a0096 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	honnef.co/go/tools v0.0.1-2020.1.5 // indirect
 )

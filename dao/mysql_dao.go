@@ -4,9 +4,15 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"strconv"
+
 	"git.code.oa.com/trpc-go/trpc-database/mysql"
 	"git.code.oa.com/trpc-go/trpc-go/client"
+	"git.code.oa.com/trpc-go/trpc-go/log"
+
+	"git.code.oa.com/video_app_short_video/hello_alice/common"
 	"git.code.oa.com/video_app_short_video/hello_alice/model"
+	"git.code.oa.com/video_app_short_video/hello_alice/config"
 )
 
 const (
@@ -21,11 +27,15 @@ var (
 
 //初始化mysql
 func InitMysqlProxy() error{
+	// 获取配置信息
+	serviceConfig := config.GetConfig()
+	mysqlConfig := serviceConfig.Mysql
+	target := fmt.Sprintf("dsn://%s:%s@tcp(%s:%d)/%s",
+		mysqlConfig.User,mysqlConfig.Password,mysqlConfig.Domain,mysqlConfig.Port,mysqlConfig.DB)
 	mysqlClientProxy = mysql.NewClientProxy(
-		"trpc.mysql.mysql.mysql",
+		mysqlConfig.ServiceName,
 		//dsn://user:passwd@tcp(vip:port)/db?timeout=1s&parseTime=true&interpolateParams=true")  mdb使用域名多实例需要加上 &interpolateParams=true
-		client.WithTarget("dsn://writeuser:X2tRGVv4jirx3aKr@tcp(shortvideotest.mdb.mig:17073)/mysql_demo?timeout=1s&parseTime=true&interpolateParams=true"),
-		//client.WithTarget("dsn://root:gZtEj*7425qr@tcp(9.135.221.147:3306)/mysql_demo?timeout=1s&parseTime=true&interpolateParams=true"),
+		client.WithTarget(target +"?timeout=1s&parseTime=true&interpolateParams=true"),
 		)
 	// 测试是否连接成功
 	var res int
@@ -45,6 +55,7 @@ func AcessMysqlInit(ctx context.Context) (rsp string,err error) {
 	result, err := mysqlClientProxy.Exec(ctx, sqlStr)
 	if err != nil {
 		err = fmt.Errorf("create table error, err:%+v", err)
+
 		return rsp,err
 	}
 	LastInsertId,_ := result.LastInsertId() // 最后一条更新数据行的主键id
@@ -59,6 +70,8 @@ func AcessMysqlInsert(ctx context.Context) (rsp string,err error) {
 	result, err := mysqlClientProxy.Exec(ctx, sqlStr, "小明",17, "小红", 18)//插入（小明，3,80）（小红，1,75）
 	if err != nil {
 		err = fmt.Errorf("insert error, err:%+v", err)
+		result := common.AttaSendFields(fmt.Sprintf("%v",err), "AcessMysqlInsert error")
+		log.Infof("AcessMysqlInsert atta SendString(), result:" + strconv.Itoa(result))
 		return "",err
 	}
 	LastInsertId,_ := result.LastInsertId() // 最后一条更新数据行的主键id
