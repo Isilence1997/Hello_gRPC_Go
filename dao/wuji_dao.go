@@ -30,7 +30,7 @@ func InitWujiProxy()(err error){
 	return err
 }
 
-//获取无极表内容
+// GetWujiContent 获取无极表内容
 func GetWujiContent(id string)(string,error){
 	var obj model.WujiData
 	err := wujiClientProxy.Get(id,&obj)//得到指定id的内容

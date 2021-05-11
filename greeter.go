@@ -15,7 +15,7 @@ import (
 // SayHello 响应HelloRequest
 func (s *greeterServiceImpl) SayHello(_ context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
 	//填充响应内容
-	rsp.Msg = "echo: " + req.GetMsg()
+	rsp.Msg = "echo: " + req.Msg
 	return nil
 }
 
@@ -57,7 +57,7 @@ func (s *greeterServiceImpl) ReadUnion(_ context.Context, req *pb.HelloRequest, 
 }
 
 // AcessRedis 对redis进行操作
-func (s *greeterServiceImpl) AcessRedis(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+func (s *greeterServiceImpl) AcessRedis(ctx context.Context, _ *pb.HelloRequest, rsp *pb.HelloReply) error {
 	redisRsp, err := logic.AcessRedis(ctx)
 	if err != nil {
 		log.Errorf("%v",err)
@@ -67,7 +67,7 @@ func (s *greeterServiceImpl) AcessRedis(ctx context.Context, req *pb.HelloReques
 	return nil
 }
 
-func (s *greeterServiceImpl) AcessMysql(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+func (s *greeterServiceImpl) AcessMysql(ctx context.Context, _ *pb.HelloRequest, rsp *pb.HelloReply) error {
 	mysqlRsp, err := logic.AcessMysql(ctx)
 	if err != nil {
 		log.Errorf("%v",err)
@@ -76,7 +76,7 @@ func (s *greeterServiceImpl) AcessMysql(ctx context.Context, req *pb.HelloReques
 	rsp.Msg = mysqlRsp
 	return nil
 }
-func (s *greeterServiceImpl) AcessWuji(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+func (s *greeterServiceImpl) AcessWuji(_ context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
 	id := req.Msg
 	wujiRsp, err := logic.AcessWuji(id)
 	if err != nil {
@@ -87,7 +87,7 @@ func (s *greeterServiceImpl) AcessWuji(ctx context.Context, req *pb.HelloRequest
 	return nil
 }
 
-func (s *greeterServiceImpl) AcessKafka(ctx context.Context, req *pb.HelloRequest, rsp *pb.HelloReply) error {
+func (s *greeterServiceImpl) AcessKafka(ctx context.Context, _ *pb.HelloRequest, rsp *pb.HelloReply) error {
 	kafkaRsp, err := logic.AcessKafka(ctx)
 	if err != nil {
 		log.Errorf("%v",err)

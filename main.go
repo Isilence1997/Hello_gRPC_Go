@@ -4,6 +4,7 @@ import (
 	"git.code.oa.com/trpc-go/trpc-database/kafka"
 	"git.code.oa.com/video_app_short_video/hello_alice/common"
 	"git.code.oa.com/video_app_short_video/hello_alice/config"
+	"git.code.oa.com/video_app_short_video/hello_alice/logic"
 	_ "go.uber.org/automaxprocs"
 
 	_ "git.code.oa.com/trpc-go/trpc-config-tconf"
@@ -55,7 +56,7 @@ func main() {
 	// 注册kafka消费handler,多个service的情况下 kafka.RegisterHandlerService(s.Service("name"), handle)
 	// 没有指定name的情况，代表所有service共用同一个handler
 	//kafka.RegisterHandlerService(s.Service("trpc.video_app_short_video.hello_alice.consumer"), dao.ConsumeKafkaMsgHandler)
-	kafka.RegisterHandlerService(s, dao.ConsumeKafkaMsgHandler)
+	kafka.RegisterHandlerService(s, logic.ConsumeKafkaMsgHandler)
 	pb.RegisterGreeterService(s, &greeterServiceImpl{})
 
 	if err := s.Serve(); err != nil {

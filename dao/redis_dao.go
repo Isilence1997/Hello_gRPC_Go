@@ -14,6 +14,7 @@ var (
 	// redis 客户端代理
 	redisClientProxy redis.Client
 )
+
 //初始化请求接口
 func InitRedisProxy() error{
 	serviceConfig := config.GetConfig()
@@ -32,6 +33,7 @@ func InitRedisProxy() error{
 	log.Infof("connect to redis successfully: %+v", do)
 	return nil
 }
+
 // 对redis中的string类型进行操作
 func AcessRedisString(ctx context.Context) (rsp string,err error) {
 	strResult, err := redis.String(redisClientProxy.Do(ctx, "SET", "key1", "hello"))
@@ -65,6 +67,7 @@ func AcessRedisString(ctx context.Context) (rsp string,err error) {
 	rsp += fmt.Sprintf("GetRange result=[%v]\n ",strResult)
 	return rsp, nil
 }
+
 // 对redis中的hash类型进行操作
 func AcessRedisHash(ctx context.Context) (rsp string,err error) {
 
@@ -92,6 +95,7 @@ func AcessRedisHash(ctx context.Context) (rsp string,err error) {
 	return rsp, nil
 }
 
+// 对redis中的sorted set类型进行操作
 func AcessRedisZset(ctx context.Context) (rsp string,err error) {
 	intResult, err := redis.Int(redisClientProxy.Do(ctx, "ZADD", "myzset", 1, "one"))
 	if err != nil {

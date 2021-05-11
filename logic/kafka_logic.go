@@ -1,4 +1,4 @@
-package dao
+package logic
 
 import (
 	"context"
@@ -14,10 +14,6 @@ import (
 	"time"
 )
 
-const (
-	fromUserId = 536164684
-	toUserId = 2454008777
-)
 var kafkaProxy kafka.Client
 //初始化mysql
 func initKafkaProxy(){
@@ -62,13 +58,6 @@ func ProcedueKafka(ctx context.Context) (rsp string,err error) {
 }
 
 //消费消息
-/*
- service:                                                                                #业务服务提供的service，可以有多个
-    - name: trpc.${app}.${server}.consumer                                                      #service的路由名称 如果使用的是123平台，需要使用trpc.${app}.${server}.consumer
-      address:cdmqszentry01.data.mig:10005,cdmqszentry02.data.mig:10069,cdmqszentry05.data.mig:10033,cdmqszentry06.data.mig:10021?topic=U_TOPIC_FOLLOW&clientid=p_FOLLOW         #kafka consumer broker address，version如果不设置则为1.1.1.0，部分ckafka需要指定0.10.2.0
-      protocol: kafka                                                                     #应用层协议
-      timeout: 1000
-*/
 func ConsumeKafkaMsgHandler(_ context.Context, key, value []byte, topic string,
 	partition int32, offset int64) error {
 	kafakRsp := fmt.Sprintf("ConsumeKafkaMsgHandler, [key]%v, [value]%v, [topic]%v, [partition]%v, [offset]%v", string(key),

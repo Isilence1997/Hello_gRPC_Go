@@ -1,5 +1,6 @@
 package logic
 
+// Package logic 业务主要逻辑代码
 import (
 	"context"
 	"fmt"
@@ -122,7 +123,7 @@ func GetUserInfo(req *pb.HelloRequest)(ugcfiRsp interface{},err error) {
 	}
 }
 
-//ReadUnion 读取union 2071表的数据,2071为社区号用户信息
+// ReadUnion2071 读取union 2071表的数据,2071为社区号用户信息
 func ReadUnion2071(req *pb.HelloRequest)(unionRsp map[string]model.SocietyUserInfoUnion2071,err error){
 	//输入用户id
 	vuid := req.Msg
@@ -172,17 +173,8 @@ func AcessRedis(ctx context.Context)(string,error){
 	redisRsp += fmt.Sprintf("zset:%v",zsetRsp)
 	return redisRsp, nil
 }
-
+// AcessMysql 对测试表进行增删改查操作
 func AcessMysql(ctx context.Context)(string,error){
-	//create table
-	/*
-	mysqlRsp, err := dao.AcessMysqlInit(ctx)
-	if err != nil {
-		err=fmt.Errorf("TestMysqlInit error, err:%+v", err)
-		return "", err
-	}
-	rsp := fmt.Sprintf("Create:%s ",mysqlRsp)
-	 */
 	// insert
 	mysqlRsp, err := dao.AcessMysqlInsert(ctx)
 	if err != nil {
@@ -220,6 +212,7 @@ func AcessMysql(ctx context.Context)(string,error){
 	return rsp, nil
 }
 
+// AcessWuji 获取无极中测试表的信息
 func AcessWuji(id string) (string,error) {
 	rsp,err := dao.GetWujiContent(id)
 	if err != nil {
@@ -230,12 +223,12 @@ func AcessWuji(id string) (string,error) {
 	}
 	return rsp,nil
 }
+
+// AcessKafka 生产者，向指定topic发送消息
 func AcessKafka(ctx context.Context) (string,error) {
-	rsp,err := dao.ProcedueKafka(ctx)
+	rsp,err := ProcedueKafka(ctx)
 	if err != nil {
 		log.Errorf("AcessKafka error, err:%+v", err)
-		result := common.AttaSendFields(fmt.Sprintf("%v",err), "GetWujiContent error")
-		log.Infof("GetWujiContent atta SendString(), result:" + strconv.Itoa(result))
 		return "",err
 	}
 	return rsp,nil

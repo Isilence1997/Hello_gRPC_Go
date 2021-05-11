@@ -49,6 +49,8 @@ func InitMysqlProxy() error{
 	err := mysqlClientProxy.Query(context.Background(), next, "SELECT 1")//增加临时列，列值为1
 	return err
 }
+
+/*
 //create 创建表
 func AcessMysqlInit(ctx context.Context) (rsp string,err error) {
 	sqlStr := fmt.Sprintf("create table if not exists %s (`id` int(11) NOT NULL AUTO_INCREMENT,`name` varchar(30),`age` int(11),PRIMARY KEY (`id`));", defaultTableName)
@@ -64,7 +66,8 @@ func AcessMysqlInit(ctx context.Context) (rsp string,err error) {
 
 	return rsp, nil
 }
-//insert
+ */
+// insert
 func AcessMysqlInsert(ctx context.Context) (rsp string,err error) {
 	sqlStr := fmt.Sprintf("insert into %s(name,age) values (?,?),(?,?)", defaultTableName)
 	result, err := mysqlClientProxy.Exec(ctx, sqlStr, "小明",17, "小红", 18)//插入（小明，3,80）（小红，1,75）
@@ -80,7 +83,7 @@ func AcessMysqlInsert(ctx context.Context) (rsp string,err error) {
 	return rsp, nil
 }
 
-//select
+// select
 func AcessMysqlSelect(ctx context.Context) (rsp string,err error){
 	var users []model.User
 	// 读取所有字段，select字段尽量只select自己关心的字段，不要用*
@@ -114,7 +117,7 @@ func AcessMysqlSelect(ctx context.Context) (rsp string,err error){
 	return rsp, nil
 }
 
-//delete
+// delete
 func AcessMysqlDelete(ctx context.Context) (rsp string,err error){
 	sqlStr := fmt.Sprintf("delete from %s WHERE name = ?", defaultTableName)
 	result, err := mysqlClientProxy.Exec(ctx, sqlStr,"小红")
@@ -128,7 +131,7 @@ func AcessMysqlDelete(ctx context.Context) (rsp string,err error){
 	return rsp, nil
 }
 
-//update
+// update
 func AcessMysqlUpdate(ctx context.Context) (rsp string,err error){
 	sqlStr := fmt.Sprintf("update %s set age = ? WHERE id = ?", defaultTableName)
 	result, err := mysqlClientProxy.Exec(ctx, sqlStr, 20, 1)
