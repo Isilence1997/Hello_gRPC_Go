@@ -69,7 +69,9 @@ func InitServiceConfig() {
 		log.Infof("yaml conf, conf:%+v", serviceConfig)
 	}
 	// 启动协程，监听配置文件变化，重新加载配置文件
-	c, _ := config.Get("tconf").Watch(context.TODO(), confName)
+	c, _ := config.Get("tconf").Watch(context.TODO(), confName)// Watch 监听配置项key的变更事件
+	//加载本地配置文件
+	//c, _ := config.Load("greeter.yaml")
 	go func() {
 		select {
 		case r := <-c:

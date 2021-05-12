@@ -39,7 +39,7 @@ func Test_Greeter_SayHello(t *testing.T) {
 	})
 
 	// 开始写单元测试逻辑
-	req := &pb.HelloRequest{}
+	req := &pb.HelloRequest{Msg: "Hello,I am client."}
 
 	rsp, err := greeterClientProxy.SayHello(trpc.BackgroundContext(), req)
 
@@ -109,7 +109,7 @@ func Test_Greeter_GetUserInfo(t *testing.T) {
 	})
 
 	// 开始写单元测试逻辑
-	req := &pb.HelloRequest{}
+	req := &pb.HelloRequest{Msg:"0xf3cb"}
 
 	rsp, err := greeterClientProxy.GetUserInfo(trpc.BackgroundContext(), req)
 
@@ -144,7 +144,7 @@ func Test_Greeter_ReadUnion(t *testing.T) {
 	})
 
 	// 开始写单元测试逻辑
-	req := &pb.HelloRequest{}
+	req := &pb.HelloRequest{Msg: "536164684"}
 
 	rsp, err := greeterClientProxy.ReadUnion(trpc.BackgroundContext(), req)
 
@@ -249,7 +249,7 @@ func Test_Greeter_AcessWuji(t *testing.T) {
 	})
 
 	// 开始写单元测试逻辑
-	req := &pb.HelloRequest{}
+	req := &pb.HelloRequest{Msg: "1"}
 
 	rsp, err := greeterClientProxy.AcessWuji(trpc.BackgroundContext(), req)
 

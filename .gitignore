@@ -5,3 +5,4 @@ upload.sh
 *.log
 hello_alice_bak/
 greeter.yaml
+hello_alice
