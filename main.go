@@ -1,31 +1,29 @@
 package main
 
 import (
-	"git.code.oa.com/trpc-go/trpc-database/kafka"
-	"git.code.oa.com/video_app_short_video/hello_alice/common"
-	"git.code.oa.com/video_app_short_video/hello_alice/config"
-	"git.code.oa.com/video_app_short_video/hello_alice/logic"
-	_ "go.uber.org/automaxprocs"
-
 	_ "git.code.oa.com/trpc-go/trpc-config-tconf"
+	"git.code.oa.com/trpc-go/trpc-database/kafka"
 	_ "git.code.oa.com/trpc-go/trpc-filter/debuglog"
 	_ "git.code.oa.com/trpc-go/trpc-filter/recovery"
+	trpc "git.code.oa.com/trpc-go/trpc-go"
+	"git.code.oa.com/trpc-go/trpc-go/log"
 	_ "git.code.oa.com/trpc-go/trpc-log-atta"
 	_ "git.code.oa.com/trpc-go/trpc-metrics-m007"
 	_ "git.code.oa.com/trpc-go/trpc-metrics-runtime"
 	_ "git.code.oa.com/trpc-go/trpc-naming-polaris"
 	_ "git.code.oa.com/trpc-go/trpc-opentracing-tjg"
 	_ "git.code.oa.com/trpc-go/trpc-selector-cl5"
-
-	"git.code.oa.com/trpc-go/trpc-go/log"
-
-	trpc "git.code.oa.com/trpc-go/trpc-go"
 	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
+	"git.code.oa.com/video_app_short_video/hello_alice/common"
+	"git.code.oa.com/video_app_short_video/hello_alice/config"
 	"git.code.oa.com/video_app_short_video/hello_alice/dao"
+	"git.code.oa.com/video_app_short_video/hello_alice/logic"
+	_ "go.uber.org/automaxprocs"
 )
 
 type greeterServiceImpl struct{}
 
+// ServiceInit TODO
 // 服务初始化
 func ServiceInit() {
 	// 初始化服务配置
@@ -37,7 +35,7 @@ func ServiceInit() {
 	}
 	// 初始化redis
 	err = dao.InitRedisProxy()
-	if err!=nil{
+	if err != nil {
 		panic(err)
 	}
 	// 初始化wuji
@@ -45,7 +43,7 @@ func ServiceInit() {
 		panic(err)
 	}
 	// 初始化atta
-	if err := common.InitAtta();err != nil {
+	if err := common.InitAtta(); err != nil {
 		panic(err)
 	}
 }

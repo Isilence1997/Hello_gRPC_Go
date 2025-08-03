@@ -15,7 +15,7 @@ import (
 )
 
 var kafkaProxy kafka.Client
-//初始化mysql
+//初始化kafka
 func initKafkaProxy(){
 	// 获取配置信息
 	serviceConfig := config.GetConfig()

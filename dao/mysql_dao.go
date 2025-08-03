@@ -94,7 +94,8 @@ func AcessMysqlSelect(ctx context.Context) (rsp string,err error){
 		return "",err
 	}
 	for i,user := range users{
-		rsp += fmt.Sprintf("%d : %+v",i,user)
+		 log.Infof("%d : %+v",i,user)
+		 rsp = "OK"
 	}
 	users = make([]model.User, 0)
 	// 框架底层自动for循环rows调用该next函数
