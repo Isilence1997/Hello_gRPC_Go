@@ -1,4 +1,4 @@
-# tRPC-Go HelloWorld Protocol Implementation & Deployment
+# gRPC-Go HelloWorld Protocol Implementation & Deployment
 
 ## Project Overview
 This project demonstrates how to build and publish a basic `tRPC-Go` echo service using a HelloWorld protocol. It includes steps for code generation with `protobuf`, service creation on the `123` platform, and pipeline setup using `vepc` and `rick`.
