@@ -1,6 +1,6 @@
 %YAML 1.2
 mysql:
-  service_name: trpc.mysql.mysql.mysql
+  service_name: gRPC.mysql.mysql.mysql
   domain: shortvideotest.mdb.mig
   port: 17073
   db: mysql_demo
@@ -8,7 +8,7 @@ mysql:
   pwd: X2tRGVv4jirx3aKr
 
 redis:
-  service_name: trpc.redis.redis.redis
+  service_name: gRPC.redis.redis.redis
   namespace: Production
   pwd: AzNIBb*PbIWQSJ,rwQ
   obj_name: sz4678.shortvideotest.redis.com
@@ -16,7 +16,7 @@ redis:
 union:
   appid: 20002564
   appkey: 0993ef6bbd651722
-  service_name: trpc.union.union.union
+  service_name: gRPC.union.union.union
   namespace: Production
   target: polaris://243969:65536
 
@@ -28,7 +28,7 @@ wuji:
   target: polaris://64394561:131072
 
 kafka:
-  service_name: trpc.video_app_short_video.hello_alice.producer
+  service_name: gRPC.video_app_short_video.hello_alice.producer
   topic: U_TOPIC_FOLLOW
   client_id: p_FOLLOW
   target: cdmqszentry01.data.mig:10005,cdmqszentry02.data.mig:10069,cdmqszentry05.data.mig:10033,cdmqszentry06.data.mig:10021

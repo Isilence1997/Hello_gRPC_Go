@@ -3,8 +3,8 @@ package dao
 import (
 	"fmt"
 
-	"git.code.oa.com/trpc-go/trpc-go/client"
-	union "git.code.oa.com/videocommlib/trpc-go-union"
+	"git.code.oa.com/gRPC-go/gRPC-go/client"
+	union "git.code.oa.com/videocommlib/gRPC-go-union"
 
 	"git.code.oa.com/video_app_short_video/hello_alice/model"
 

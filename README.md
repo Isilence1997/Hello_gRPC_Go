@@ -1,7 +1,7 @@
 # gRPC-Go HelloWorld Protocol Implementation & Deployment
 
 ## Project Overview
-This project demonstrates how to build and publish a basic `tRPC-Go` echo service using a HelloWorld protocol. It includes steps for code generation with `protobuf`, service creation on the `123` platform, and pipeline setup using `vepc` and `rick`.
+This project demonstrates how to build and publish a basic `gRPC-Go` echo service using a HelloWorld protocol. It includes steps for code generation with `protobuf`, service creation on the `123` platform, and pipeline setup using `vepc` and `rick`.
 
 ## Getting Started
 
@@ -33,11 +33,11 @@ git clone git@git.code.oa.com:video_app_short_video/hello_alice.git
 - Service name in option should match the actual server name to avoid default postfixes like _greeter.
 
 ### Generate Service Code
-- On the 123 platform, generate tRPC-Go stub/service code using:
+- On the 123 platform, generate gRPC-Go stub/service code using:
 
-    - TRPC-Go Stub Mod (for basic stubs)
+    - gRPC-Go Stub Mod (for basic stubs)
 
-    - TRPC-Go Service Generator (for full code template)
+    - gRPC-Go Service Generator (for full code template)
 
 ### Push Stub Code
 After downloading the generated stub:
@@ -47,11 +47,11 @@ After downloading the generated stub:
 - Clean up go.mod:
     ```
     replace git.code.oa.com/... => ./stub/git.code.oa.com/...
-    git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v0.0.0-0001010100000-0000000
+    git.code.oa.com/gRPCprotocol/video_app_short_video/hello_alice_greeter v0.0.0-0001010100000-0000000
     ```
 - Run: 
     ```
-    go get -v git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter@v1.1.2
+    go get -v git.code.oa.com/gRPCprotocol/video_app_short_video/hello_alice_greeter@v1.1.2
     ```
 ## CI/CD with Vepc
 

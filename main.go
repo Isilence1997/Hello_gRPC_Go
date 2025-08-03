@@ -1,19 +1,19 @@
 package main
 
 import (
-	_ "git.code.oa.com/trpc-go/trpc-config-tconf"
-	"git.code.oa.com/trpc-go/trpc-database/kafka"
-	_ "git.code.oa.com/trpc-go/trpc-filter/debuglog"
-	_ "git.code.oa.com/trpc-go/trpc-filter/recovery"
-	trpc "git.code.oa.com/trpc-go/trpc-go"
-	"git.code.oa.com/trpc-go/trpc-go/log"
-	_ "git.code.oa.com/trpc-go/trpc-log-atta"
-	_ "git.code.oa.com/trpc-go/trpc-metrics-m007"
-	_ "git.code.oa.com/trpc-go/trpc-metrics-runtime"
-	_ "git.code.oa.com/trpc-go/trpc-naming-polaris"
-	_ "git.code.oa.com/trpc-go/trpc-opentracing-tjg"
-	_ "git.code.oa.com/trpc-go/trpc-selector-cl5"
-	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
+	_ "git.code.oa.com/gRPC-go/gRPC-config-tconf"
+	"git.code.oa.com/gRPC-go/gRPC-database/kafka"
+	_ "git.code.oa.com/gRPC-go/gRPC-filter/debuglog"
+	_ "git.code.oa.com/gRPC-go/gRPC-filter/recovery"
+	gRPC "git.code.oa.com/gRPC-go/gRPC-go"
+	"git.code.oa.com/gRPC-go/gRPC-go/log"
+	_ "git.code.oa.com/gRPC-go/gRPC-log-atta"
+	_ "git.code.oa.com/gRPC-go/gRPC-metrics-m007"
+	_ "git.code.oa.com/gRPC-go/gRPC-metrics-runtime"
+	_ "git.code.oa.com/gRPC-go/gRPC-naming-polaris"
+	_ "git.code.oa.com/gRPC-go/gRPC-opentracing-tjg"
+	_ "git.code.oa.com/gRPC-go/gRPC-selector-cl5"
+	pb "git.code.oa.com/gRPCprotocol/video_app_short_video/hello_alice_greeter"
 	"git.code.oa.com/video_app_short_video/hello_alice/common"
 	"git.code.oa.com/video_app_short_video/hello_alice/config"
 	"git.code.oa.com/video_app_short_video/hello_alice/dao"
@@ -49,11 +49,11 @@ func ServiceInit() {
 }
 func main() {
 
-	s := trpc.NewServer()
+	s := gRPC.NewServer()
 	ServiceInit()
 	// 注册kafka消费handler,多个service的情况下 kafka.RegisterHandlerService(s.Service("name"), handle)
 	// 没有指定name的情况，代表所有service共用同一个handler
-	//kafka.RegisterHandlerService(s.Service("trpc.video_app_short_video.hello_alice.consumer"), dao.ConsumeKafkaMsgHandler)
+	//kafka.RegisterHandlerService(s.Service("gRPC.video_app_short_video.hello_alice.consumer"), dao.ConsumeKafkaMsgHandler)
 	kafka.RegisterHandlerService(s, logic.ConsumeKafkaMsgHandler)
 	pb.RegisterGreeterService(s, &greeterServiceImpl{})
 

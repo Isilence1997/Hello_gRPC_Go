@@ -10,14 +10,14 @@ import (
 	"strconv"
 	"time"
 
-	_ "git.code.oa.com/trpc-go/trpc-codec/videopacket"
-	_ "git.code.oa.com/trpc-go/trpc-filter/validation"
-	"git.code.oa.com/trpc-go/trpc-go/client"
-	"git.code.oa.com/trpc-go/trpc-go/codec"
-	"git.code.oa.com/trpc-go/trpc-go/log"
-	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
-	ufr "git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read"
-	ugcfi "git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner"
+	_ "git.code.oa.com/gRPC-go/gRPC-codec/videopacket"
+	_ "git.code.oa.com/gRPC-go/gRPC-filter/validation"
+	"git.code.oa.com/gRPC-go/gRPC-go/client"
+	"git.code.oa.com/gRPC-go/gRPC-go/codec"
+	"git.code.oa.com/gRPC-go/gRPC-go/log"
+	pb "git.code.oa.com/gRPCprotocol/video_app_short_video/hello_alice_greeter"
+	ufr "git.code.oa.com/gRPCprotocol/video_app_short_video/gRPC_ugc_follow_read_jce_ugc_follow_read"
+	ugcfi "git.code.oa.com/video_app_short_video/short_video_gRPC_proto/ugc_follow_inner"
 	p "git.code.oa.com/videocommlib/videopacket-go"
 )
 const (
@@ -27,12 +27,12 @@ const (
 )
 // BatchGetFansCount 批量获取粉丝数接口
 func BatchGetFansCount() (ufrRsp *ufr.BathGetFansCountResponse, err error){
-	// proxy 客户端调用桩函数或者调用代理，由trpc工具自动生成，内部调用client
+	// proxy 客户端调用桩函数或者调用代理，由gRPC工具自动生成，内部调用client
 	proxy := ufr.NewUgcFollowReadClientProxy(
-		client.WithProtocol("trpc"),
+		client.WithProtocol("gRPC"),
 		client.WithNetwork("tcp4"),
 		//target 后端服务的地址，规则为 selectorname://endpoint
-		client.WithTarget("polaris://trpc.video_app_short_video.trpc_ugc_follow_read_jce.UgcFollowReadPb"),
+		client.WithTarget("polaris://gRPC.video_app_short_video.gRPC_ugc_follow_read_jce.UgcFollowReadPb"),
 		client.WithNamespace("Development"),
 		client.WithTimeout(time.Millisecond*500),
 		)
@@ -56,8 +56,8 @@ func GetUserInfo(req *pb.HelloRequest)(ugcfiRsp interface{},err error) {
 		client.WithNetwork("tcp4"),
 		client.WithNamespace("Development"),
 		client.WithSerializationType(codec.SerializationTypeJCE),
-		client.WithTarget("polaris://trpc.video_app_short_video.trpc_ugc_follow_read_jce.UgcFollowRead"),
-		//client.WithServiceName("trpc.video_app_short_video.trpc_ugc_follow_read_jce.UgcFollowRead"),
+		client.WithTarget("polaris://gRPC.video_app_short_video.gRPC_ugc_follow_read_jce.UgcFollowRead"),
+		//client.WithServiceName("gRPC.video_app_short_video.gRPC_ugc_follow_read_jce.UgcFollowRead"),
 	}
 	switch Command {
 	case 0xf3ca:

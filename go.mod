@@ -5,26 +5,26 @@ go 1.12
 require (
 	git.code.oa.com/atta/attaapi_go v1.6.5 // indirect
 	git.code.oa.com/open-wuji/go-sdk v1.2.2
-	git.code.oa.com/trpc-go/trpc-codec/videopacket v0.1.8
-	git.code.oa.com/trpc-go/trpc-config-tconf v0.1.8
-	git.code.oa.com/trpc-go/trpc-database/kafka v0.1.8
-	git.code.oa.com/trpc-go/trpc-database/mysql v0.1.6
-	git.code.oa.com/trpc-go/trpc-database/redis v0.1.7
-	git.code.oa.com/trpc-go/trpc-filter/debuglog v0.1.3
-	git.code.oa.com/trpc-go/trpc-filter/recovery v0.1.2
-	git.code.oa.com/trpc-go/trpc-filter/validation v0.1.1
-	git.code.oa.com/trpc-go/trpc-go v0.6.2
-	git.code.oa.com/trpc-go/trpc-log-atta v0.1.12
-	git.code.oa.com/trpc-go/trpc-metrics-m007 v0.4.2
-	git.code.oa.com/trpc-go/trpc-metrics-runtime v0.2.2
-	git.code.oa.com/trpc-go/trpc-naming-polaris v0.2.8
-	git.code.oa.com/trpc-go/trpc-opentracing-tjg v0.1.8
-	git.code.oa.com/trpc-go/trpc-selector-cl5 v0.2.0
-	git.code.oa.com/trpc-go/trpc-selector-dsn v0.1.3 // indirect
-	git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter v1.1.15
-	git.code.oa.com/trpcprotocol/video_app_short_video/trpc_ugc_follow_read_jce_ugc_follow_read v1.1.5
-	git.code.oa.com/video_app_short_video/short_video_trpc_proto/ugc_follow_inner v0.0.0-20210428070627-ca6dd116fbd9
-	git.code.oa.com/videocommlib/trpc-go-union v0.1.5
+	git.code.oa.com/gRPC-go/gRPC-codec/videopacket v0.1.8
+	git.code.oa.com/gRPC-go/gRPC-config-tconf v0.1.8
+	git.code.oa.com/gRPC-go/gRPC-database/kafka v0.1.8
+	git.code.oa.com/gRPC-go/gRPC-database/mysql v0.1.6
+	git.code.oa.com/gRPC-go/gRPC-database/redis v0.1.7
+	git.code.oa.com/gRPC-go/gRPC-filter/debuglog v0.1.3
+	git.code.oa.com/gRPC-go/gRPC-filter/recovery v0.1.2
+	git.code.oa.com/gRPC-go/gRPC-filter/validation v0.1.1
+	git.code.oa.com/gRPC-go/gRPC-go v0.6.2
+	git.code.oa.com/gRPC-go/gRPC-log-atta v0.1.12
+	git.code.oa.com/gRPC-go/gRPC-metrics-m007 v0.4.2
+	git.code.oa.com/gRPC-go/gRPC-metrics-runtime v0.2.2
+	git.code.oa.com/gRPC-go/gRPC-naming-polaris v0.2.8
+	git.code.oa.com/gRPC-go/gRPC-opentracing-tjg v0.1.8
+	git.code.oa.com/gRPC-go/gRPC-selector-cl5 v0.2.0
+	git.code.oa.com/gRPC-go/gRPC-selector-dsn v0.1.3 // indirect
+	git.code.oa.com/gRPCprotocol/video_app_short_video/hello_alice_greeter v1.1.15
+	git.code.oa.com/gRPCprotocol/video_app_short_video/gRPC_ugc_follow_read_jce_ugc_follow_read v1.1.5
+	git.code.oa.com/video_app_short_video/short_video_gRPC_proto/ugc_follow_inner v0.0.0-20210428070627-ca6dd116fbd9
+	git.code.oa.com/videocommlib/gRPC-go-union v0.1.5
 	git.code.oa.com/videocommlib/videopacket-go v1.0.4
 	github.com/Shopify/sarama v1.29.0 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect

@@ -2,8 +2,8 @@ package config
 
 import (
 	"context"
-	"git.code.oa.com/trpc-go/trpc-go/config"
-	"git.code.oa.com/trpc-go/trpc-go/log"
+	"git.code.oa.com/gRPC-go/gRPC-go/config"
+	"git.code.oa.com/gRPC-go/gRPC-go/log"
 	"gopkg.in/yaml.v3" // 解析yaml
 )
 

@@ -5,7 +5,7 @@
 vepc:
   # VEPC基础配置
   basic:
-    name: "123://video_app_short_video.hello_alice/go/trpc"
+    name: "123://video_app_short_video.hello_alice/go/gRPC"
 
     # 服务的标签
     tag:
@@ -28,7 +28,7 @@ vepc:
   #service:
   # -
   #    # 接口协议类型
-  #    type: "trpc"
+  #    type: "gRPC"
   #    # service名字
   #    callee: "com.tencent.spp_rpc.RpcHello"
   #    # 函数名
@@ -49,7 +49,7 @@ vepc:
   #    description: "求和demo"
   # -
   #    # 基于VideoPacket协议的rpc接口
-  #    type: "VideoPacketRpc"
+  #    type: "VideoPackegRPC"
   #    # service名字
   #    callee: "ThisIsGreeterTxServerName"
   #    # 函数名

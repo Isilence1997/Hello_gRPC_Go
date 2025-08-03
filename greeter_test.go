@@ -4,13 +4,13 @@ import (
 	"context"
 	"testing"
 
-	"git.code.oa.com/trpc-go/trpc-go"
-	_ "git.code.oa.com/trpc-go/trpc-go/http"
+	"git.code.oa.com/gRPC-go/gRPC-go"
+	_ "git.code.oa.com/gRPC-go/gRPC-go/http"
 
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
-	pb "git.code.oa.com/trpcprotocol/video_app_short_video/hello_alice_greeter"
+	pb "git.code.oa.com/gRPCprotocol/video_app_short_video/hello_alice_greeter"
 )
 
 var greeterService = &greeterServiceImpl{}
@@ -34,14 +34,14 @@ func Test_Greeter_SayHello(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.SayHello(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.SayHello(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{Msg: "Hello,I am client."}
 
-	rsp, err := greeterClientProxy.SayHello(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.SayHello(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_SayHello req: %v", req)
@@ -69,14 +69,14 @@ func Test_Greeter_BathGetFansCount(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.BathGetFansCount(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.BathGetFansCount(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{}
 
-	rsp, err := greeterClientProxy.BathGetFansCount(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.BathGetFansCount(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_BathGetFansCount req: %v", req)
@@ -104,14 +104,14 @@ func Test_Greeter_GetUserInfo(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.GetUserInfo(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.GetUserInfo(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{Msg:"0xf3cb"}
 
-	rsp, err := greeterClientProxy.GetUserInfo(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.GetUserInfo(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_GetUserInfo req: %v", req)
@@ -139,14 +139,14 @@ func Test_Greeter_ReadUnion(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.ReadUnion(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.ReadUnion(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{Msg: "536164684"}
 
-	rsp, err := greeterClientProxy.ReadUnion(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.ReadUnion(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_ReadUnion req: %v", req)
@@ -174,14 +174,14 @@ func Test_Greeter_AcessRedis(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.AcessRedis(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.AcessRedis(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{}
 
-	rsp, err := greeterClientProxy.AcessRedis(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.AcessRedis(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_AcessRedis req: %v", req)
@@ -209,14 +209,14 @@ func Test_Greeter_AcessMysql(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.AcessMysql(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.AcessMysql(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{}
 
-	rsp, err := greeterClientProxy.AcessMysql(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.AcessMysql(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_AcessMysql req: %v", req)
@@ -244,14 +244,14 @@ func Test_Greeter_AcessWuji(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.AcessWuji(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.AcessWuji(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{Msg: "1"}
 
-	rsp, err := greeterClientProxy.AcessWuji(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.AcessWuji(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_AcessWuji req: %v", req)
@@ -279,14 +279,14 @@ func Test_Greeter_AcessKafka(t *testing.T) {
 		}
 
 		rsp := &pb.HelloReply{}
-		err := greeterService.AcessKafka(trpc.BackgroundContext(), r, rsp)
+		err := greeterService.AcessKafka(gRPC.BackgroundContext(), r, rsp)
 		return rsp, err
 	})
 
 	// 开始写单元测试逻辑
 	req := &pb.HelloRequest{}
 
-	rsp, err := greeterClientProxy.AcessKafka(trpc.BackgroundContext(), req)
+	rsp, err := greeterClientProxy.AcessKafka(gRPC.BackgroundContext(), req)
 
 	// 输出入参和返回 (检查t.Logf输出，运行 `go test -v`)
 	t.Logf("Greeter_AcessKafka req: %v", req)

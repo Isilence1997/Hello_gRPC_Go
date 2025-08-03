@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"git.code.oa.com/trpc-go/trpc-database/mysql"
-	"git.code.oa.com/trpc-go/trpc-go/client"
-	"git.code.oa.com/trpc-go/trpc-go/log"
+	"git.code.oa.com/gRPC-go/gRPC-database/mysql"
+	"git.code.oa.com/gRPC-go/gRPC-go/client"
+	"git.code.oa.com/gRPC-go/gRPC-go/log"
 
 	"git.code.oa.com/video_app_short_video/hello_alice/common"
 	"git.code.oa.com/video_app_short_video/hello_alice/model"
