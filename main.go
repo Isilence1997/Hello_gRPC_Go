@@ -23,7 +23,7 @@ import (
 
 type greeterServiceImpl struct{}
 
-// ServiceInit TODO
+// ServiceInit
 // 服务初始化
 func ServiceInit() {
 	// 初始化服务配置
@@ -47,6 +47,7 @@ func ServiceInit() {
 		panic(err)
 	}
 }
+
 func main() {
 
 	s := gRPC.NewServer()
