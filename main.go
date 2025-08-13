@@ -52,12 +52,14 @@ func main() {
 
 	s := gRPC.NewServer()
 	ServiceInit()
-	// 注册kafka消费handler,多个service的情况下 kafka.RegisterHandlerService(s.Service("name"), handle)
+	// 注册kafka消费handler到服务实例s上,多个service的情况下 kafka.RegisterHandlerService(s.Service("name"), handle)
 	// 没有指定name的情况，代表所有service共用同一个handler
 	//kafka.RegisterHandlerService(s.Service("gRPC.video_app_short_video.hello_alice.consumer"), dao.ConsumeKafkaMsgHandler)
 	kafka.RegisterHandlerService(s, logic.ConsumeKafkaMsgHandler)
+	// 把 gRPC 服务实现（greeterServiceImpl）注册到 gRPC Server s 中
+	// RegisterGreeterService 是 protoc 在根据 .proto 文件自动生成的注册函数。
 	pb.RegisterGreeterService(s, &greeterServiceImpl{})
-
+	//s.serve() 运行两个服务
 	if err := s.Serve(); err != nil {
 		log.Fatal(err)
 	}
